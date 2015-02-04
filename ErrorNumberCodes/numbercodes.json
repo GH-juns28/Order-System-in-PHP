@@ -1,0 +1,16 @@
+{
+    "error_codes": {
+        "1": {
+            "error_code": "1",
+            "description": "Invalid Password"
+        },
+        "2": {
+            "error_code": "2",
+            "description": "Invalid Username"
+        },
+        "3":{
+        	"error_code": "3",
+            "description": "Required All Fields"
+        }
+    }
+}
