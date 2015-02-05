@@ -3,6 +3,7 @@ $( document ).ready(function() {
             $("#login").submit(function(){
                 LoginFormEmail = $("#login-form-email").val();
                 LoginFormPassword = $("#login-form-password").val();
+                
                 // Get Value from API
 
                 fileUrl = ''+window.location.origin+'/graphApi/loginApi.php?email='+LoginFormEmail+'&password='+LoginFormPassword+'';
