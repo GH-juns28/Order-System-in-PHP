@@ -1,6 +1,6 @@
 CREATE TABLE `customer` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `tin_no` INT,
+  `Tin_Nu` INT,
   `Fname` VARCHAR,
   `Lname` VARCHAR,
   `Minitial` VARCHAR,
