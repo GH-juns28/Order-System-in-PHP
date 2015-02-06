@@ -55,7 +55,7 @@ $sessionCheck->checkSession($_SESSION);
                     </div>
                 </li>
                 <li class="active">
-                    <a href="index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span></span></a>
+                    <a href="index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Home</span> <span></span></a>
                 </li>
                 
                 <li>
