@@ -42,7 +42,7 @@ $ProductDivision = new ProductDivision();
                             <img alt="image" class="img-circle" src="https://graph.facebook.com/radrivan/picture" />
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Rex Adrivan</strong>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Alvin Caspe</strong>
                              </span> <span class="text-muted text-xs block">Software Engineer <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="profile.html">Profile</a></li>
@@ -60,13 +60,7 @@ $ProductDivision = new ProductDivision();
                     <a href="index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span></span></a>
                 </li>
                 
-                <li>
-                    <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Customer</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li><a href="AddCustomer.php">Add Customer</a></li>
-                        <li><a href="ViewCustomer.php">View Customer</a></li>
-                    </ul>
-                </li>
+                
                 
                 
                 <li>

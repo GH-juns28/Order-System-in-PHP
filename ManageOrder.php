@@ -61,13 +61,6 @@ $sessionCheck->checkSession($_SESSION);
                     <a href="index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span></span></a>
                 </li>
                 
-                <li>
-                    <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Customer</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li><a href="AddCustomer.php">Add Customer</a></li>
-                        <li><a href="ViewCustomer.php">View Customer</a></li>
-                    </ul>
-                </li>
                 
                 
                 <li>
@@ -232,6 +225,9 @@ $sessionCheck->checkSession($_SESSION);
                             
             <div class="text-right">
                                 <button class="btn btn-primary"><i class="fa fa-dollar"></i> Make A Payment</button>
+                                <button class="btn btn-primary" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+                                
+
                             </div>
         </div>
         </div>
