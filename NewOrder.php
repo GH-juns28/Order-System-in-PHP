@@ -45,7 +45,7 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Rex Adrivan</strong>
-                             </span> <span class="text-muted text-xs block">Software Engineer <b class="caret"></b></span> </span> </a>
+                             </span> <span class="text-muted text-xs block">Software Developer <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="profile.html">Profile</a></li>
                             <li><a href="contacts.html">Contacts</a></li>
@@ -59,7 +59,7 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
                     </div>
                 </li>
                 <li>
-                    <a href="index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Home</span> <span></span></a>
+                    <a href="index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Homer</span> <span></span></a>
                 </li>
                 
                      

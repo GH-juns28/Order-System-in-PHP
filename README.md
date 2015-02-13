@@ -26,6 +26,7 @@ Alvin Thesis uses a number of open source projects to work properly:
 * Download and Install Wamp Server
 * Extract to BaseFolder
 * Import the sql files "import_database.sql"
+* Configure Mysql Connection 
 
 
 
@@ -34,6 +35,13 @@ Alvin Thesis uses a number of open source projects to work properly:
 
  - Add Functionalities
  - Javascript Validations
+ - Filtering Issues
+	- Delete Orders
+	- Add Profile Page for customer
+	- Delete Products
+	- Product Pagination
+	- Add Admin to add Products
+	- Payment Gateway
 
 License
 ----
