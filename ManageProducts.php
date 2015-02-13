@@ -162,6 +162,7 @@ $sessionCheck->checkSession($_SESSION);
                         <th>Product Description</th>
                         <th>Status</th>
                         <th>Price </th>
+                        <th>Total Price</th>
                     </tr>
                     </thead>
                     <tbody>

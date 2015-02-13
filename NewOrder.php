@@ -6,8 +6,12 @@
 */
 
 include_once('class/class.SessionCheck.php');
+include_once('class/class.Products.php');
 $sessionCheck = new SessionCheck();
 $sessionCheck->checkSession($_SESSION);
+$ShowProduct = new Products();
+$ShowProduct = $ShowProduct->ViewProducts(10,1);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -119,12 +123,30 @@ $sessionCheck->checkSession($_SESSION);
         </div>
 
 
-        <div class="wrapper wrapper-content">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ibox float-e-margins">  
+        <div  class="wrapper wrapper-content">
+            <div id="ProductContent" page="1" class="row">
+                <?php
+                    $count = count($ShowProduct);
+                
+                    
+                    //var_dump($ShowProduct);
+
+                    $ProductId = $ShowProduct[0]['Product_Id'];
+                    $ProductName = $ShowProduct[0]['Product_Name'];
+                    $Product_Description = $ShowProduct[0]['Product_Description'];
+                    $Price = $ShowProduct[0]['Price'];
+
+                    for ($i = 0; $i < $count; $i++) {
+                    $ProductId = $ShowProduct[$i]['Product_Id'];
+                    $ProductName = $ShowProduct[$i]['Product_Name'];
+                    $Product_Description = $ShowProduct[$i]['Product_Description'];
+                    $ProductPrice = $ShowProduct[$i]['Price'];
+                           ?>
+
+                            <div class="col-lg-3">
+                            <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>New Order <small>coming on your way!</small></h5>
+                            <h5><?php echo $ProductName; ?></h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -144,53 +166,57 @@ $sessionCheck->checkSession($_SESSION);
                             </div>
                         </div>
                         <div class="ibox-content">
-                            <form method="get" class="form-horizontal">
-                                <div class="form-group"><label class="col-sm-2 control-label">Order Date</label>
-
-                                    <div class="col-sm-10"><input type="text" class="form-control"></div>
-                                </div>
-                                <div class="hr-line-dashed"></div>
-
-                                <div class="form-group"><label class="col-sm-2 control-label">List Of Products</label>
-
-                                    <div class="col-sm-10"><input type="text" class="form-control"></div>
-                                </div>
-                                <div class="hr-line-dashed"></div>
-
-                                <div class="form-group"><label class="col-sm-2 control-label">Product Description</label>
-
-                                    <div class="col-sm-10"><input type="text" class="form-control"></div>
-                                </div>
-                                <div class="hr-line-dashed"></div>
-
-                                <div class="form-group"><label class="col-sm-2 control-label">Price</label>
-
-                                    <div class="col-sm-10"><input type="text" class="form-control"></div>
-                                </div>
-                                <div class="hr-line-dashed"></div>
-
-                                <div class="form-group"><label class="col-sm-2 control-label">Total</label>
-
-                                    <div class="col-sm-10"><input type="text" class="form-control"></div>
-                                </div>
-                                <div class="hr-line-dashed"></div>
-
-                                
-                                <div class="form-group"><label class="col-sm-2 control-label">Payment</label>
-
-                                    <div class="col-sm-10"><input type="text" class="form-control"></div>
-                                </div>
-                                <div class="hr-line-dashed"></div>
-
-                                <div class="form-group">
-                                    <div class="col-sm-4 col-sm-offset-2">
-                                        <button class="btn btn-primary" type="submit">Submit</button>
+                            <div class="carousel slide" id="carousel<?php echo $i;?>">
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <img alt="image" class="img-responsive" src="img/p_big3.jpg">
                                     </div>
+                                    <div class="item">
+                                        <img alt="image" class="img-responsive" src="img/p_big1.jpg">
+                                    </div>
+                                    <div class="item ">
+                                        <img alt="image" class="img-responsive" src="img/p_big2.jpg">
+                                    </div>
+
                                 </div>
+                                <a data-slide="prev" href="#carousel<?php echo $i;?>" class="left carousel-control">
+                                    <span class="icon-prev"></span>
+                                </a>
+                                <a data-slide="next" href="#carousel<?php echo $i;?>" class="right carousel-control">
+                                    <span class="icon-next"></span>
+                                </a>
+                            </div>
+                            <div>
+                                <div class="ibox-content profile-content">
+                                <h4><strong>Product Description</strong></h4>
+                              
+                                <p>
+                                    <?php echo $Product_Description; ?>
+                                </p>
+                                <p>
+                                   <strong>Price:</strong> <?php echo $ProductPrice; ?>
+                                </p>
+                                
+                                <form class="NewOrder">
+                                    <input type="hidden" name="ProductTitle" value="<?php echo $ProductName;?>">
+                                    <input type="hidden" name="ProductDescription" value="<?php echo $Product_Description;?>">
+                                    <input type="hidden" name="ProductId" value="<?php echo $ProductId;?>">
+                                    <input type="hidden" name="ProductPrice" value="<?php echo $ProductPrice;?>">
+                                    <input type="quantity" name="ProductQuantity" placeholder="Quantity" class="form-control">
+                                    <button type="button submit" class="btn btn-primary btn-sm btn-block">Buy Item</button>
+                                   
                             </form>
+                            </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                           <?php
+
+                        }
+                ?>
+                
+                
             </div>
 
 
@@ -216,15 +242,10 @@ $sessionCheck->checkSession($_SESSION);
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-    <!-- Flot -->
-    <script src="js/plugins/flot/jquery.flot.js"></script>
-    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="js/plugins/flot/jquery.flot.spline.js"></script>
-    <script src="js/plugins/flot/jquery.flot.resize.js"></script>
-    <script src="js/plugins/flot/jquery.flot.pie.js"></script>
-    <script src="js/plugins/flot/jquery.flot.symbol.js"></script>
-    <script src="js/plugins/flot/curvedLines.js"></script>
+    <script src="JSfiles/scrollend.js"></script>
+    <script src="JSfiles/OrderProduct.js"></script>
 
+        
     <!-- Peity -->
     <script src="js/plugins/peity/jquery.peity.min.js"></script>
     <script src="js/demo/peity-demo.js"></script>
@@ -249,95 +270,24 @@ $sessionCheck->checkSession($_SESSION);
     <!-- ChartJS-->
     <script src="js/plugins/chartJs/Chart.min.js"></script>
 
-    <script>
-        $(document).ready(function() {
 
+    <div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;"><div class="modal-backdrop fade in"></div>
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Info</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p><strong>Product Successfully Ordered</strong> .</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-            var d1 = [[1262304000000, 6], [1264982400000, 3057], [1267401600000, 20434], [1270080000000, 31982], [1272672000000, 26602], [1275350400000, 27826], [1277942400000, 24302], [1280620800000, 24237], [1283299200000, 21004], [1285891200000, 12144], [1288569600000, 10577], [1291161600000, 10295]];
-            var d2 = [[1262304000000, 5], [1264982400000, 200], [1267401600000, 1605], [1270080000000, 6129], [1272672000000, 11643], [1275350400000, 19055], [1277942400000, 30062], [1280620800000, 39197], [1283299200000, 37000], [1285891200000, 27000], [1288569600000, 21000], [1291161600000, 17000]];
-
-            var data1 = [
-                { label: "Data 1", data: d1, color: '#17a084'},
-                { label: "Data 2", data: d2, color: '#127e68' }
-            ];
-            $.plot($("#flot-chart1"), data1, {
-                xaxis: {
-                    tickDecimals: 0
-                },
-                series: {
-                    lines: {
-                        show: true,
-                        fill: true,
-                        fillColor: {
-                            colors: [{
-                                opacity: 1
-                            }, {
-                                opacity: 1
-                            }]
-                        },
-                    },
-                    points: {
-                        width: 0.1,
-                        show: false
-                    },
-                },
-                grid: {
-                    show: false,
-                    borderWidth: 0
-                },
-                legend: {
-                    show: false,
-                }
-            });
-
-            var lineData = {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
-                datasets: [
-                    {
-                        label: "Example dataset",
-                        fillColor: "rgba(220,220,220,0.5)",
-                        strokeColor: "rgba(220,220,220,1)",
-                        pointColor: "rgba(220,220,220,1)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(220,220,220,1)",
-                        data: [65, 59, 40, 51, 36, 25, 40]
-                    },
-                    {
-                        label: "Example dataset",
-                        fillColor: "rgba(26,179,148,0.5)",
-                        strokeColor: "rgba(26,179,148,0.7)",
-                        pointColor: "rgba(26,179,148,1)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(26,179,148,1)",
-                        data: [48, 48, 60, 39, 56, 37, 30]
-                    }
-                ]
-            };
-
-            var lineOptions = {
-                scaleShowGridLines: true,
-                scaleGridLineColor: "rgba(0,0,0,.05)",
-                scaleGridLineWidth: 1,
-                bezierCurve: true,
-                bezierCurveTension: 0.4,
-                pointDot: true,
-                pointDotRadius: 4,
-                pointDotStrokeWidth: 1,
-                pointHitDetectionRadius: 20,
-                datasetStroke: true,
-                datasetStrokeWidth: 2,
-                datasetFill: true,
-                responsive: true,
-            };
-
-
-            var ctx = document.getElementById("lineChart").getContext("2d");
-            var myNewChart = new Chart(ctx).Line(lineData, lineOptions);
-
-        });
-    </script>
 </body>
 
 </html>

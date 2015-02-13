@@ -17,13 +17,15 @@ if(empty($email) || empty($password)){
 		);
 		echo json_encode($array);
 }else{
-	if($checkLogin == 1){
+	if($checkLogin){
 	$array = array(
 		    "output" => "1"
 		);
 		echo json_encode($array);
 		$_SESSION['email'] = $email;
 		$_SESSION['password'] = $password;
+		$_SESSION['User_Id'] = $checkLogin[0]['User_Id'];
+		
 
 
 }else{

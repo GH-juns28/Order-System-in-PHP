@@ -6,10 +6,11 @@
 */
 
 include_once('class/class.SessionCheck.php');
+include_once('class/class.ManageOrders.php');
 $sessionCheck = new SessionCheck();
 $sessionCheck->checkSession($_SESSION);
-include_once('class/class.ProductDivision.php');
-$ProductDivision = new ProductDivision();
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,7 +57,7 @@ $ProductDivision = new ProductDivision();
                         IN+
                     </div>
                 </li>
-                <li>
+                <li class="active">
                     <a href="index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span></span></a>
                 </li>
                 
@@ -122,101 +123,132 @@ $ProductDivision = new ProductDivision();
 
 
         <div class="wrapper wrapper-content">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ibox float-e-margins">  
-                        <div class="ibox-title">
-                            <h5>Add Products <small>on your system!</small></h5>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-wrench"></i>
-                                </a>
-                                <ul class="dropdown-menu dropdown-user">
-
-                                    <li><a href="#">Config option 1</a>
-                                    </li>
-                                    <li><a href="#">Config option 2</a>
-                                    </li>
-                                </ul>
-                                <a class="close-link">
-                                    <i class="fa fa-times"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="ibox-content">
-                            <form method="get" name="AddProduct" class="AddProduct form-horizontal">
-                            
-                                <div class="hr-line-dashed"></div>
-
-                                <div class="form-group"><label class="col-sm-2 control-label">Company Division</label>
-                                         <?php
-
-                                        $ProductDivision = $ProductDivision->GetallCompany();
-                                        $i = count($ProductDivision);
-
-
-                                        ?>
-                                    <div class="col-sm-10"><select class="form-control m-b" name="CompanyDivision">
-                                            <?php
-                                                for ($x = 0; $x < $i; $x++) {
-
-                                                    ;?>
-                                                        <option value="<?php echo $ProductDivision[$x]['Company_Division_Id'];?>"><?php echo $ProductDivision[$x]['Division_Name'];?></option>
-                                                       
-                                                    <?php
-                                                } 
-                                            ?>
-
-                                            
-                                    </select></div>
-                                </div>
-
-                                <div class="hr-line-dashed"></div>
-
-                                <div class="form-group"><label class="col-sm-2 control-label">Product Name</label>
-
-                                    <div class="col-sm-10"><input type="text" name="ProductName" class="form-control"></div>
-                                </div>
-
-                                <div class="hr-line-dashed"></div>
-
-                                <div class="form-group"><label class="col-sm-2 control-label">Product Description</label>
-
-                                    <div class="col-sm-10"><input type="text" name="ProductDescription" class="form-control"></div>
-                                </div>
-                                <div class="hr-line-dashed"></div>
-
-                                <div class="form-group"><label class="col-sm-2 control-label">Price</label>
-
-                                    <div class="col-sm-10"><input type="text" name="ProductPrice" class="form-control"></div>
-                                </div>
-                                
-
-                                <div class="form-group">
-                                    <div class="col-sm-4 col-sm-offset-2">
-                                        <button class="btn btn-primary" type="submit">Submit</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
         
+
+
+        <div class="row">
+
+        <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Custom responsive table </h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-wrench"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#">Config option 1</a>
+                    </li>
+                    <li><a href="#">Config option 2</a>
+                    </li>
+                </ul>
+                <a class="close-link">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="row ">
+                
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+
+                        <th>Product Name</th>
+                        <th>Product Description</th>
+                        <th>Price </th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>    
+                    </tr>
+                    </thead>
+                    <tbody id="OrdersTbody">
+                        <?php
+
+                            $CheckOrders = new ManageOrders();
+                            $CheckOrders = $CheckOrders->CheckOrders(1);
+                            if($CheckOrders){
+                                $count = count($CheckOrders);
+                             if($count > 0){
+                                $count = count($CheckOrders)- 1; 
+                            }
+
+                            //var_dump($CheckOrders);
+                            for ($i = 0; $i <= $count; $i++) {
+                                $Product_Total_Price = $CheckOrders[$i]['Total_Price'];
+                                $Product_Quantity = $CheckOrders[$i]['Quantity'];
+                                $Product_Id = $CheckOrders[$i]['Product_Id'];
+                                $order = new ManageOrders();
+                                $order = $order->ProductData($Product_Id);
+                                $Product_Name = $order[0]['Product_Name'];
+                                $Product_Description = $order[0]['Product_Description'];
+                                $Product_Price = $order[0]['Price'];
+                                //var_dump($order);
+
+
+                                ?>
+                                    <form class="ManageOrderTable">
+                                        <tr>
+                                            
+                                            <td><?php echo $Product_Name;?></td>
+                                            <td><?php echo $Product_Description;?></td>
+                                            <td><?php echo $Product_Price;?></td>
+                                            <td><?php echo $Product_Quantity;?></span></td>
+                                            <td><?php echo $Product_Total_Price;?></td>
+                                            <td><a href="#"><button class="btn btn-primary"><i class="fa fa-times"></i></button></i></a></td>
+                                        </tr>
+                                        </form>
+                                <?php
+                            }
+                            }
+                            
+                        ?>
+                    
+                  
+                    
+                    </tbody>
+                </table>
+            </div>
+            <table class="table invoice-total">
+                                <tbody>
+                                <tr>
+                                    <td><strong>TOTAL :</strong></td>
+                                    <?php 
+                                        $order = new ManageOrders();
+                                        $TotalPrice = $order->ManageOrderTotalPrice($_SESSION['User_Id']);
+                                        $TotalPriceArr = array();   
+                                        for ($i=0; $i < count($TotalPrice); $i++) { 
+                                            array_push($TotalPriceArr,$TotalPrice[$i]['Total_Price']);
+                                        }
+                                    ?>
+                                    <td><?php echo array_sum($TotalPriceArr);?></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            
+            <div class="text-right">
+                                <button class="btn btn-primary"><i class="fa fa-dollar"></i> Make A Payment</button>
+                            </div>
+        </div>
+        </div>
+        </div>
+
+        </div>
 
 
         </div>
 
 
         <div class="footer">
-            
+            <div class="pull-right">
+                10GB of <strong>250GB</strong> Free.
+            </div>
             <div>
-                <strong>Copyright</strong> Alvin Company &copy; 2014-2015
+                <strong>Copyright</strong> Example Company &copy; 2014-2015
             </div>
         </div>
 
@@ -228,7 +260,16 @@ $ProductDivision = new ProductDivision();
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="JSfiles/ManageOrder.js"></script>
 
+    <!-- Flot -->
+    <script src="js/plugins/flot/jquery.flot.js"></script>
+    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="js/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="js/plugins/flot/jquery.flot.pie.js"></script>
+    <script src="js/plugins/flot/jquery.flot.symbol.js"></script>
+    <script src="js/plugins/flot/curvedLines.js"></script>
 
     <!-- Peity -->
     <script src="js/plugins/peity/jquery.peity.min.js"></script>
@@ -253,24 +294,6 @@ $ProductDivision = new ProductDivision();
 
     <!-- ChartJS-->
     <script src="js/plugins/chartJs/Chart.min.js"></script>
-    <script src="JSfiles/AddProduct.js"></script>
-
-    <div class="modal inmodal fade in" id="myModal6" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;"><div class="modal-backdrop fade in"></div>
-                                <div class="modal-dialog modal-sm">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                            <h4 class="modal-title">Info</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p><strong>Product Successfully Added</strong> .</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
 </body>
 

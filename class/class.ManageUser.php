@@ -23,13 +23,29 @@ class ManageUsers{
 		$query = $this->link->query("SELECT * from users where username = '".$username."'");
 		$rowCount = $query->rowCount();
 		return $rowCount;
+
 	}
 
 
 	function LoginUser($email,$password){
 		$query = $this->link->query("SELECT * from users where email = '".$email."' AND password = '".$password."'");
 		$rowCount = $query->rowCount();
-		return $rowCount;
+		if($rowCount > 0){
+			$result = $query->fetchAll();
+			return $result;
+		}	
+	}
+
+	function CheckUserInfo($email,$password){
+		$query = $this->link->query("SELECT * from users where email = '".$email."' AND password = '".$password."'");
+		$rowCount = $query->rowCount();
+		if($rowCount > 0){
+			$result = $query->fetchAll();
+			return $result;
+		}
+		else{
+			return $rowCount;
+		}
 	}
 
 	

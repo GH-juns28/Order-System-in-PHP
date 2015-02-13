@@ -151,6 +151,20 @@ $sessionCheck->checkSession($_SESSION);
                                 </div>
                                 <div class="hr-line-dashed"></div>
 
+                                <div class="form-group"><label class="col-sm-2 control-label">Customer Name</label>
+
+                                    <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="form-group"><label class="col-sm-2 control-label">Address</label>
+
+                                    <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+
+
+
                                 <div class="form-group"><label class="col-sm-2 control-label">First Name</label>
 
                                     <div class="col-sm-10"><input type="text" class="form-control"></div>
