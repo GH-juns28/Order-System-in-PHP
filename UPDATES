@@ -1,7 +1,9 @@
-UPDATES
+Upgrades:
+	- Filtering Issues
 	- Delete Orders
 	- Add Profile Page for customer
 	- Delete Products
 	- Product Pagination
-	- Delete Customer
+	- Add Admin to add Products
 	- Payment Gateway
+	

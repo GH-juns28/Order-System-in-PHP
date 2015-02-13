@@ -25,7 +25,8 @@ Alvin Thesis uses a number of open source projects to work properly:
 ### Installation
 * Download and Install Wamp Server
 * Extract to BaseFolder
-* Change Database Configuration
+* Import the sql files "import_database.sql"
+
 
 
 
