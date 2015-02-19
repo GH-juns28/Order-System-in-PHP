@@ -20,7 +20,6 @@ $sessionCheck->checkSession($_SESSION);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Alvin Thesis | Dashboard v.4</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -64,7 +63,7 @@ $sessionCheck->checkSession($_SESSION);
                 
                 
                 <li>
-                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Products</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Salesman</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li><a href="ManageProducts.php">Manage Products</a></li>
                         <li><a href="AddProducts.php">Add Products</a></li>
@@ -72,7 +71,7 @@ $sessionCheck->checkSession($_SESSION);
                 </li>
               
                 <li>
-                    <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Order</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Customer</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li><a href="NewOrder.php">New Order</a></li>
                         <li><a href="ManageOrder.php">Manage Order</a></li> 
@@ -185,8 +184,15 @@ $sessionCheck->checkSession($_SESSION);
 
                                 ?>
                                     <form class="ManageOrderTable">
+                                        <input type="hidden" name="Product_Id" value="<?php echo $Product_Id?>">
+                                        <input type="hidden" name="Product_Name" value="<?php echo $Product_Name;?>">
+                                        <input type="hidden" name="Product_Description" value="<?php echo $Product_Description;?>">
+                                        <input type="hidden" name="Product_Price" value="<?php echo $Product_Price?>">
+                                        <input type="hidden" name="Product_Quantity" value="<?php echo $Product_Name;?>">
+                                        <input type="hidden" name="Product_Total_Price" value="<?php echo $Product_Name;?>">
+
                                         <tr>
-                                            
+                                                
                                             <td><?php echo $Product_Name;?></td>
                                             <td><?php echo $Product_Description;?></td>
                                             <td><?php echo $Product_Price;?></td>

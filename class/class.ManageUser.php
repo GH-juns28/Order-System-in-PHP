@@ -48,6 +48,31 @@ class ManageUsers{
 		}
 	}
 
+	function CheckUserType($User_Id){
+		
+		$query = $this->link->query("SELECT User_type from users where User_id = '".$User_Id."'");
+		$rowCount = $query->rowCount();
+		if($rowCount > 0){
+			$result = $query->fetchAll();
+			return $result;
+		}
+		else{
+			return $rowCount;
+		}
+
+	}
+
+	function CheckIfSalesman($user_type){
+		if($user_type == 2){
+			
+		}else{
+			header('Location: index.php');
+		}
+	}
+
+	function CheckIfCustomer(){
+
+	}
 	
 }
 

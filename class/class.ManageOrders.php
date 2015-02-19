@@ -1,6 +1,7 @@
 <?php
 include_once('class.database.php');
 
+
 class ManageOrders{
 	public $link;
 
@@ -30,13 +31,14 @@ class ManageOrders{
 		$query = $this->link->query("SELECT Total_Price FROM `order` WHERE User_Id = '".$User_Id."'");
 		return $query->fetchAll();
 	}
+
+	function DeleteOrder($Product_Id){
+
+		$query = $this->link->query("DELETE FROM `order` WHERE Product_Id = '".$Product_Id."'");
+		return $rowCount = $query->rowCount(); 
+	}
 	
 }
 
-/*
-$CheckOrders = new ManageOrders();
-$CheckOrders = $CheckOrders->ProductData(50);
-var_dump($CheckOrders);
-*/
 
 ?>
