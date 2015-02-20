@@ -12,15 +12,17 @@ class Products{
 	}
 
 	function ViewProducts($itemPerPage,$page){
+
 		if($page == 1){
-			$page = $itemPerPage;
 			$index = 0;
+			$Limit = $itemPerPage;
 		}else{
-			$page = $page + $itemPerPage;
-			$index = $page;
+			$index = ($page-1)*10;
+			$Limit =  $page*10;
 		}
 
-		$query = $this->link->query("SELECT * from product LIMIT ".$index.",".$page."");
+
+		$query = $this->link->query("SELECT * from product LIMIT ".$index.",".$Limit."");
 		$rowCount = $query->rowCount();
 		if($rowCount > 0){
 			$result = $query->fetchAll();

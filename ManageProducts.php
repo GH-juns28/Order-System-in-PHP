@@ -6,8 +6,12 @@
 */
 
 include_once('class/class.SessionCheck.php');
+include_once('class/class.Products.php');
 $sessionCheck = new SessionCheck();
 $sessionCheck->checkSession($_SESSION);
+$ShowProduct = new Products();
+$ShowProduct = $ShowProduct->ViewProducts(10,1);
+var_dump($ShowProduct);
 ?>
 <!DOCTYPE html>
 <html>
@@ -61,7 +65,7 @@ $sessionCheck->checkSession($_SESSION);
                 
                 
                 <li>
-                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Products</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Salesman</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li><a href="ManageProducts.php">Manage Products</a></li>
                         <li><a href="AddProducts.php">Add Products</a></li>
@@ -69,9 +73,9 @@ $sessionCheck->checkSession($_SESSION);
                 </li>
               
                 <li>
-                    <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Order</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Customer</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="NewOrder.php">New Order</a></li>
+                        <li><a href="NewOrder.php">Order</a></li>
                         <li><a href="ManageOrder.php">Manage Order</a></li> 
                     </ul>
                 </li>
@@ -150,12 +154,11 @@ $sessionCheck->checkSession($_SESSION);
                     <tr>
 
                         <th>Product ID</th>
-                        <th>Product Number</th>
-                        <th>Product Type</th>
+                        <th>Product Name</th>
                         <th>Product Description</th>
-                        <th>Status</th>
-                        <th>Price </th>
-                        <th>Total Price</th>
+                        <th>Product Price</th>
+                        <th>Company Division</th>
+                        <th>Quantity </th>
                     </tr>
                     </thead>
                     <tbody>

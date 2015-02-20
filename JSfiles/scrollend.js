@@ -2,16 +2,18 @@ $(window).scroll(function() {
    if($(window).scrollTop() + $(window).height() == $(document).height()) {
        page = $("#ProductContent").attr('page');
        page = parseInt(page);
-       if(page > 1){
-        fileUrl = ''+window.location.origin+'/graphApi/ProductPagination.php?page='+page+'';
-                $.getJSON(fileUrl, function(data){
-                    console.log(data);
-            
-        });
-              }
-        
-       page = page + 1;
-       $("#ProductContent").attr('page',page++);
+       console.log(page);
+       $.get('http://a.localhost/graphApi/NewOrderPagination.php?page='+page+'')
+       .success(function(data) {
+           $("#ProductContent").append(data);
+           jQuery(function(){
+             //dom ready codes
+          });
+           page = page + 1;
+            $("#ProductContent").attr('page',page++);
+
+       });
+
 
 
    }

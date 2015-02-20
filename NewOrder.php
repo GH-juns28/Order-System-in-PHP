@@ -67,7 +67,7 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
                 
                 
                 <li>
-                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Products</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Salesman</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li><a href="ManageProducts.php">Manage Products</a></li>
                         <li><a href="AddProducts.php">Add Products</a></li>
@@ -75,9 +75,9 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
                 </li>
               
                 <li>
-                    <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Order</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Customer</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="NewOrder.php">New Order</a></li>
+                        <li><a href="NewOrder.php">Order</a></li>
                         <li><a href="ManageOrder.php">Manage Order</a></li> 
                     </ul>
                 </li>
@@ -119,7 +119,7 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
 
 
         <div  class="wrapper wrapper-content">
-            <div id="ProductContent" page="1" class="row">
+            <div id="ProductContent" page="2" class="row">
                 <?php
                     $count = count($ShowProduct);
                 
