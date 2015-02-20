@@ -216,7 +216,7 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
 
 
         
-
+            <button id="LoadProduct" type="button submit" class="btn btn-primary btn-sm btn-block">LOAD MORE PRODUCTS</button>
 
         </div>
 
