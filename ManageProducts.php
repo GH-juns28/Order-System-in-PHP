@@ -35,7 +35,9 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
 </head>
 
 <body>
+
     <div id="wrapper">
+
     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav" id="side-menu">
@@ -120,8 +122,7 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
         
 
 
-        <div class="row">
-
+        <div class="row">   
         <div class="col-lg-12">
         <div class="ibox float-e-margins">
         <div class="ibox-title">
@@ -162,28 +163,10 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
                     </tr>
                     </thead>
                     <tbody page="2" class="InsertProductData">
-                    <?php
-                        //var_dump($ShowProduct);
-                        foreach ($ShowProduct as &$arr) {
-                        ?>
-                            <tr>
-                                <td><?php echo $arr['Product_Id'];?></td>
-                                <td><?php echo $arr['Product_Name'];?></td>
-                                <td><?php echo $arr['Product_Description'];?></td>
-                                <td><?php echo $arr['Price'];?></td>
-                                <td><?php echo $arr['Company_Division_Id'];?></td>
-                                <td><?php echo $arr['Quantity'];?></td>
-                                <td><a href="#"><i class="fa fa-close text-navy"></i></a></td>
-                            </tr>
-                        <?php
-                    }
-                    ?>   
-                    
-                    
                     </tbody>
                 </table>
             </div>
-            <button id="LoadProduct" type="button submit" class="btn btn-primary btn-sm btn-block">LOAD MORE PRODUCTS</button>
+            
         </div>
         </div>
         </div>
@@ -211,6 +194,8 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <script src="Pagination/script.js"></script>
 
     <!-- Flot -->
     <script src="js/plugins/flot/jquery.flot.js"></script>
@@ -244,7 +229,7 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
 
     <!-- ChartJS-->
     <script src="js/plugins/chartJs/Chart.min.js"></script>
-    <script src="JSfiles/ManageProductScroll.js"></script>
+    <script src="JSfiles/ManageProduct.js"></script>
 
 </body>
 

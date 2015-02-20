@@ -119,104 +119,9 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
 
 
         <div  class="wrapper wrapper-content">
-            <div id="ProductContent" page="2" class="row">
-                <?php
-                    $count = count($ShowProduct);
-                
-                    
-                    //var_dump($ShowProduct);
+            <div id="ProductContent" class="row">
 
-                    $ProductId = $ShowProduct[0]['Product_Id'];
-                    $ProductName = $ShowProduct[0]['Product_Name'];
-                    $Product_Description = $ShowProduct[0]['Product_Description'];
-                    $Price = $ShowProduct[0]['Price'];
-
-                    for ($i = 0; $i < $count; $i++) {
-                    $ProductId = $ShowProduct[$i]['Product_Id'];
-                    $ProductName = $ShowProduct[$i]['Product_Name'];
-                    $Product_Description = $ShowProduct[$i]['Product_Description'];
-                    $ProductPrice = $ShowProduct[$i]['Price'];
-                           ?>
-
-                            <div class="col-lg-3">
-                            <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5><?php echo $ProductName; ?></h5>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-wrench"></i>
-                                </a>
-                                <ul class="dropdown-menu dropdown-user">
-                                    <li><a href="#">Config option 1</a>
-                                    </li>
-                                    <li><a href="#">Config option 2</a>
-                                    </li>
-                                </ul>
-                                <a class="close-link">
-                                    <i class="fa fa-times"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="ibox-content">
-                            <div class="carousel slide" id="carousel<?php echo $i;?>">
-                                <div class="carousel-inner">
-                                    <div class="item active">
-                                        <img alt="image" class="img-responsive" src="img/p_big3.jpg">
-                                    </div>
-                                    <div class="item">
-                                        <img alt="image" class="img-responsive" src="img/p_big1.jpg">
-                                    </div>
-                                    <div class="item ">
-                                        <img alt="image" class="img-responsive" src="img/p_big2.jpg">
-                                    </div>
-
-                                </div>
-                                <a data-slide="prev" href="#carousel<?php echo $i;?>" class="left carousel-control">
-                                    <span class="icon-prev"></span>
-                                </a>
-                                <a data-slide="next" href="#carousel<?php echo $i;?>" class="right carousel-control">
-                                    <span class="icon-next"></span>
-                                </a>
-                            </div>
-                            <div>
-                                <div class="ibox-content profile-content">
-                                <h4><strong>Product Description</strong></h4>
-                              
-                                <p>
-                                    <?php echo $Product_Description; ?>
-                                </p>
-                                <p>
-                                   <strong>Price:</strong> <?php echo $ProductPrice; ?>
-                                </p>
-                                
-                                <form class="NewOrder">
-                                    <input type="hidden" name="ProductTitle" value="<?php echo $ProductName;?>">
-                                    <input type="hidden" name="ProductDescription" value="<?php echo $Product_Description;?>">
-                                    <input type="hidden" name="ProductId" value="<?php echo $ProductId;?>">
-                                    <input type="hidden" name="ProductPrice" value="<?php echo $ProductPrice;?>">
-                                    <input type="quantity" name="ProductQuantity" placeholder="Quantity" class="form-control">
-                                    <button type="button submit" class="btn btn-primary btn-sm btn-block">Buy Item</button>
-                                   
-                            </form>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                           <?php
-
-                        }
-                ?>
-                
-                
             </div>
-
-
-        
-            <button id="LoadProduct" type="button submit" class="btn btn-primary btn-sm btn-block">LOAD MORE PRODUCTS</button>
 
         </div>
 
@@ -264,6 +169,7 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
 
     <!-- ChartJS-->
     <script src="js/plugins/chartJs/Chart.min.js"></script>
+    <script src="Pagination/NewOrder/script.js"></script>
 
 
     <div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;"><div class="modal-backdrop fade in"></div>

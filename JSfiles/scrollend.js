@@ -8,7 +8,7 @@ $("#LoadProduct").on('click',function(){
        page = $("#ProductContent").attr('page');
        page = parseInt(page);
        console.log(page);
-       $.get('http://a.localhost/graphApi/NewOrderPagination.php?page='+page+'')
+       $.get('http://a.localhost/Pagination/')
        .success(function(data) {
            $("#ProductContent").append(data);
            jQuery(function(){
