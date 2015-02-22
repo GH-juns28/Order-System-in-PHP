@@ -5,10 +5,13 @@
     Tutor: Rex Adrivan    
 */
 
-include_once('class/class.SessionCheck.php');
 include_once('class/class.ManageOrders.php');
+include_once('class/class.SessionCheck.php');
 $sessionCheck = new SessionCheck();
 $sessionCheck->checkSession($_SESSION);
+include_once('class/class.ManageUser.php');
+$CheckUserInfo = new ManageUsers();
+$CheckUserInfo = $CheckUserInfo->CheckUserInfo($_SESSION['email'],$_SESSION['password']);
 
 
 ?>
@@ -42,7 +45,7 @@ $sessionCheck->checkSession($_SESSION);
                             <img alt="image" class="img-circle" src="https://graph.facebook.com/radrivan/picture" />
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Rex Adrivan</strong>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $CheckUserInfo[0]['Username'];?></strong>
                              </span> <span class="text-muted text-xs block">Software Developer <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="profile.html">Profile</a></li>
@@ -97,7 +100,7 @@ $sessionCheck->checkSession($_SESSION);
         </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <span class="m-r-sm text-muted welcome-message">Welcome to Alvin Thesis.</span>
+                    <span class="m-r-sm text-muted welcome-message">Welcome</span>
                 </li>
                 
                 
@@ -161,33 +164,27 @@ $sessionCheck->checkSession($_SESSION);
                     <tbody id="OrdersTbody">
                         <?php
 
-                            $CheckOrders = new ManageOrders();
-                            $CheckOrders = $CheckOrders->CheckOrders(1);
-                            if($CheckOrders){
-                                $count = count($CheckOrders);
-                             if($count > 0){
-                                $count = count($CheckOrders)- 1; 
-                            }
+                            $Order = new ManageOrders();
+                            $checkOrders = $Order->CheckOrders($_SESSION['User_Id']);
+                            //var_dump($checkOrders);
+                            for ($i=0; $i < count($checkOrders); $i++) { 
+                                
+                                $ProductData = $Order->ProductData($checkOrders[$i]['Product_Id']);
+                                
+                                for ($b=0; $b < count($ProductData); $b++) { 
+                                    $Product_Total_Price = $checkOrders[$i]['Total'];
+                                    $Product_Id = $checkOrders[$i]['Product_Id'];
 
-                            //var_dump($CheckOrders);
-                            for ($i = 0; $i <= $count; $i++) {
-                                $Product_Total_Price = $CheckOrders[$i]['Total'];
-                                $Product_Quantity = $CheckOrders[$i]['Quantity'];
-                                $Product_Id = $CheckOrders[$i]['Product_Id'];
-                                $order = new ManageOrders();
-                                $order = $order->ProductData($Product_Id);
-                                $Product_Name = $order[0]['Product_Name'];
-                                $Product_Description = $order[0]['Product_Description'];
-                                $Product_Price = $order[0]['Price'];
-                                //var_dump($order);
-
-
-                                ?>
-                                    <form class="ManageOrderTable">
-                                        <input type="hidden" name="Product_Id" value="<?php echo $Product_Id?>">
+                                    $Product_Description = $ProductData[$b]['Product_Description'];
+                                    $Product_Name = $ProductData[$b]['Product_Name'];
+                                    $Product_Price = $ProductData[$b]['Price'];
+                                    $Product_Quantity = $checkOrders[$i]['Quantity'];
+                                        ?>
+                                        <form class="ManageOrderTable">
+                                        <input type="hidden" name="Product_Id" value="<?php echo $Product_Id;?>">
                                         <input type="hidden" name="Product_Name" value="<?php echo $Product_Name;?>">
                                         <input type="hidden" name="Product_Description" value="<?php echo $Product_Description;?>">
-                                        <input type="hidden" name="Product_Price" value="<?php echo $Product_Price?>">
+                                        <input type="hidden" name="Product_Price" value="<?php echo $Product_Price;?>">
                                         <input type="hidden" name="Product_Quantity" value="<?php echo $Product_Name;?>">
                                         <input type="hidden" name="Product_Total_Price" value="<?php echo $Product_Name;?>">
 
@@ -201,8 +198,11 @@ $sessionCheck->checkSession($_SESSION);
                                             <td><a href="#"><button class="btn btn-primary"><i class="fa fa-times"></i></button></i></a></td>
                                         </tr>
                                         </form>
-                                <?php
-                            }
+                                        <?php
+
+
+
+                                }
                             }
                             
                         ?>

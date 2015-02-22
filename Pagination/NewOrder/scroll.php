@@ -27,7 +27,7 @@ function showData($data,$con,$limit){
   $start = ($page-1)*$limit;
   }
   
-  $sql = "select * from product order by Product_Id asc limit $start,$limit";
+  $sql = "select * from product order by Product_Id desc limit $start,$limit";
   $str='';
   $data = $con->query($sql);
   if($data!=null && $data->num_rows>0){

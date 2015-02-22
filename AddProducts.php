@@ -8,13 +8,15 @@
 include_once('class/class.SessionCheck.php');
 $sessionCheck = new SessionCheck();
 $sessionCheck->checkSession($_SESSION);
+
 include_once('class/class.ProductDivision.php');
 include_once('class/class.ManageUser.php');
 $ProductDivision = new ProductDivision();
 $ManageUser = new ManageUsers();
 $SalesMan = $ManageUser->CheckUserType($_SESSION['User_Id']);
 //$CheckIfSalesman = $ManageUser->CheckIfSalesman($SalesMan[0][0]);
-
+$CheckUserInfo = new ManageUsers();
+$CheckUserInfo = $CheckUserInfo->CheckUserInfo($_SESSION['email'],$_SESSION['password']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -47,7 +49,7 @@ $SalesMan = $ManageUser->CheckUserType($_SESSION['User_Id']);
                             <img alt="image" class="img-circle" src="https://graph.facebook.com/radrivan/picture" />
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Alvin Caspe</strong>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $CheckUserInfo[0]['Username'];?></strong>
                              </span> <span class="text-muted text-xs block">Software Engineer <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="profile.html">Profile</a></li>
@@ -62,14 +64,14 @@ $SalesMan = $ManageUser->CheckUserType($_SESSION['User_Id']);
                     </div>
                 </li>
                 <li>
-                    <a href="index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span></span></a>
+                    <a href="index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Home</span> <span></span></a>
                 </li>
                 
                 
                 
                 
                 <li>
-                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Products</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Salesman</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li><a href="ManageProducts.php">Manage Products</a></li>
                         <li><a href="AddProducts.php">Add Products</a></li>
@@ -77,9 +79,9 @@ $SalesMan = $ManageUser->CheckUserType($_SESSION['User_Id']);
                 </li>
               
                 <li>
-                    <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Order</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Customer</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="NewOrder.php">New Order</a></li>
+                        <li><a href="NewOrder.php">Order</a></li>
                         <li><a href="ManageOrder.php">Manage Order</a></li> 
                     </ul>
                 </li>
@@ -103,7 +105,7 @@ $SalesMan = $ManageUser->CheckUserType($_SESSION['User_Id']);
         </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <span class="m-r-sm text-muted welcome-message">Welcome to Alvin Thesis.</span>
+                    <span class="m-r-sm text-muted welcome-message">Welcome</span>
                 </li>
                 
                 

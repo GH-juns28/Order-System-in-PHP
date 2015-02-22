@@ -6,9 +6,15 @@
 */
 
 include_once('class/class.SessionCheck.php');
-include_once('class/class.Products.php');
 $sessionCheck = new SessionCheck();
 $sessionCheck->checkSession($_SESSION);
+include_once('class/class.ManageUser.php');
+$CheckUserInfo = new ManageUsers();
+$CheckUserInfo = $CheckUserInfo->CheckUserInfo($_SESSION['email'],$_SESSION['password']);
+
+
+include_once('class/class.Products.php');
+
 $ShowProduct = new Products();
 $ShowProduct = $ShowProduct->ViewProducts(10,1);
 
@@ -44,7 +50,7 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
                             <img alt="image" class="img-circle" src="https://graph.facebook.com/radrivan/picture" />
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Rex Adrivan</strong>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $CheckUserInfo[0]['Username'];?></strong>
                              </span> <span class="text-muted text-xs block">Software Developer <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="profile.html">Profile</a></li>
@@ -101,7 +107,7 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
         </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <span class="m-r-sm text-muted welcome-message">Welcome to Alvin Thesis.</span>
+                    <span class="m-r-sm text-muted welcome-message">Welcome</span>
                 </li>
                 
                 

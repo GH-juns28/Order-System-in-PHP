@@ -10,14 +10,32 @@ class ManageUsers{
 		return $this->link;
 	}
 
-	function registerUsers($username,$password,$firstname,$lastname,$email){
+	function registerUsers($username,$email,$password,$User_type){
 
-		$query = $this->link->prepare("INSERT INTO users (username,password,firstname,lastname,email) VALUES (?,?,?,?,?)");
-		$values = array($username,$password,$firstname,$lastname,$email);
+		$query = $this->link->prepare("INSERT INTO users (username,email,password,User_type) VALUES (?,?,?,?)");
+		$values = array($userName,$password,$email,$User_type);
 		$query->execute($values);
 		$counts = $query->rowCount();
-		return $counts;
+		if($rowCount > 0){
+			$result = $query->fetchAll();
+			return $result;
+		}	
+	
+
+		
 	}
+
+	function Userinfo($firstName,$lastName,$user_id,$address,$mobileNumber){
+
+		$queryInsertUserinfo("INSERT INTO users_info (First_Name,Last_Name,User_id,Address,Contact_Number) VALUES (?,?,?,?,?)");
+		$InsertUsefinoValues = array($firstName,$lastName,$user_id,$address,$mobileNumber);
+		$queryInsertUserinfo->execute($InsertUsefinoValues);
+		$counts = $queryInsertUserinfo->rowCount();
+		return $counts;
+
+	}
+
+	
 
 	function CheckUsername($username){
 		$query = $this->link->query("SELECT * from users where username = '".$username."'");
@@ -75,5 +93,11 @@ class ManageUsers{
 	}
 	
 }
+
+/*
+$ManageUsers = new ManageUsers();
+$ManageUsers->registerUsers("Rex","Adrivan","adrivanrex","rexadrivan","adrivanrex@gmail.com","1","09358661725","Iligan City","1");
+var_dump($ManageUsers);
+*/
 
 ?>

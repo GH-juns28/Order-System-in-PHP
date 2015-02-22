@@ -28,7 +28,7 @@ $session->loginSessionCheck($_SESSION);
         <div class="row">
 
             <div class="col-md-6">
-                <h2 class="font-bold">Welcome to Alvin Thesis</h2>
+                <h2 class="font-bold">Welcome</h2>
 
                 <p>
                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -56,10 +56,10 @@ $session->loginSessionCheck($_SESSION);
                         <p class="text-muted text-center">
                             <small>Do not have an account?</small>
                         </p>
-                        <a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>
+                        <a class="btn btn-sm btn-white btn-block" href="register.php">Create an account</a>
                     </form>
                     <p class="m-t">
-                        <small>Thesis &copy; 2015</small>
+                        <small>Inventory &copy; 2015</small>
                     </p>
                 </div>
             </div>
@@ -67,7 +67,7 @@ $session->loginSessionCheck($_SESSION);
         <hr/>
         <div class="row">
             <div class="col-md-6">
-                Copyright Alvin
+                Copyright 
             </div>
             <div class="col-md-6 text-right">
                <small>© 2014-2015</small>

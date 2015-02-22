@@ -27,6 +27,8 @@ class ManageOrders{
 		}
 	}
 
+
+
 	function ManageOrderTotalPrice($User_Id){
 		$query = $this->link->query("SELECT Total FROM `order` WHERE User_Id = '".$User_Id."'");
 		return $query->fetchAll();
@@ -36,6 +38,12 @@ class ManageOrders{
 
 		$query = $this->link->query("DELETE FROM `order` WHERE Product_Id = '".$Product_Id."'");
 		return $rowCount = $query->rowCount(); 
+	}
+
+	function getManageOrders($Product_Id){
+		$query = $this->link->query("SELECT order.Order_Id,product.Product_Description FROM order INNER JOIN product ON order.Product_Id=product.Product_Id");
+		
+		return $result = $query->fetchAll();
 	}
 	
 }

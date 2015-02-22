@@ -21,46 +21,43 @@
         <div>
             <div>
 
-                <h1 class="logo-name">IN+</h1>
 
             </div>
-            <h3>Register to IN+</h3>
             <p>Create account to see it in action.</p>
-            <form class="m-t" role="form" action="http://webapplayers.com/inspinia_admin-v1.9/login.html">
+            <form class="m-t" role="form" >
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="First Name" required="">
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Last Name" required="">
+                    <input type="text" class="form-control" placeholder="Last Name" required="">
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="User Name" required="">
+                    <input type="text" class="form-control" placeholder="User Name" required="">
                 </div>
 
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Password" required="">
+                    <input type="password" class="form-control" placeholder="Password" required="">
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Confirm Password" required="">
+                    <input type="password" class="form-control" placeholder="Confirm Password" required="">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Email" required="">
+                    <input type="email" class="form-control" placeholder="Email" required="">
                 </div>
 
                  <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Mobile Number" required="">
+                    <input type="text" class="form-control" placeholder="Mobile Number" required="">
                 </div>
 
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Address" required="">
+                    <input type="text" class="form-control" placeholder="Address" required="">
                 </div>
 
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Tin Number" required="">
-                </div>
-
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Gender" required="">
+                    <select class="form-control m-b" name="Gender">
+                        <option value="1">Male</option>  
+                        <option value="2">Female</option>     
+                    </select>
                 </div>
 
 
