@@ -171,7 +171,7 @@ $sessionCheck->checkSession($_SESSION);
 
                             //var_dump($CheckOrders);
                             for ($i = 0; $i <= $count; $i++) {
-                                $Product_Total_Price = $CheckOrders[$i]['Total_Price'];
+                                $Product_Total_Price = $CheckOrders[$i]['Total'];
                                 $Product_Quantity = $CheckOrders[$i]['Quantity'];
                                 $Product_Id = $CheckOrders[$i]['Product_Id'];
                                 $order = new ManageOrders();
@@ -221,7 +221,7 @@ $sessionCheck->checkSession($_SESSION);
                                         $TotalPrice = $order->ManageOrderTotalPrice($_SESSION['User_Id']);
                                         $TotalPriceArr = array();   
                                         for ($i=0; $i < count($TotalPrice); $i++) { 
-                                            array_push($TotalPriceArr,$TotalPrice[$i]['Total_Price']);
+                                            array_push($TotalPriceArr,$TotalPrice[$i]['Total']);
                                         }
                                     ?>
                                     <td><?php echo array_sum($TotalPriceArr);?></td>

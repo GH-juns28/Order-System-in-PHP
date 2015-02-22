@@ -28,7 +28,7 @@ class ManageOrders{
 	}
 
 	function ManageOrderTotalPrice($User_Id){
-		$query = $this->link->query("SELECT Total_Price FROM `order` WHERE User_Id = '".$User_Id."'");
+		$query = $this->link->query("SELECT Total FROM `order` WHERE User_Id = '".$User_Id."'");
 		return $query->fetchAll();
 	}
 

@@ -36,15 +36,15 @@ function showData($data,$con,$limit){
       
        <tr>
                                 <td>'.$row['Product_Id'].'</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                                <td>'.$row['Product_Name'].'</td>
+                                <td>'.$row['Product_Description'].'</td>
+                                <td>'.$row['Price'].'</td>
                                 <td>1</td>
                                 <td></td>
-                                <td><a >
+                                <td>
                                 <form class="testing">
                                 <input type="hidden" name="Product_Id" value="'.$row['Product_Id'].'">
-                                <i class="fa fa-close text-navy"></i></a>
+                                <i class="fa fa-close text-navy"></i>
                                 </form></td>
                             </tr>
                             ';

@@ -44,6 +44,15 @@ class Products{
 		
 	}
 
+	function DeleteProduct($Product_Id){
+		$queryDeleteOrder = $this->link->query("DELETE FROM `order` WHERE Product_Id = '".$Product_Id."'");
+		$queryDeleteProduct = $this->link->query("DELETE FROM `product` WHERE Product_Id = '".$Product_Id."'");
+		return $rowCount = $queryDeleteProduct->rowCount(); 
+		 
+
+		
+	}
+
 	
 }
 
