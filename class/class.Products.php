@@ -39,7 +39,7 @@ class Products{
 		$Price =  $getData[0]['Price'];
 		$Total_Price = $Quantity*$Price;
 		
-		$query = $this->link->query("INSERT INTO `order` (`Order_Id`, `User_Id`, `Quantity`, `Total_Price`, `Product_Id`) VALUES (NULL, '".$User_Id."', '".$Quantity."', '".$Total_Price."', '".$Product_Id."');");
+		$query = $this->link->query("INSERT INTO `order` (`Order_Id`, `User_Id`, `Quantity`, `Total`, `Product_Id`) VALUES (NULL, '".$User_Id."', '".$Quantity."', '".$Total_Price."', '".$Product_Id."');");
 		
 		
 	}

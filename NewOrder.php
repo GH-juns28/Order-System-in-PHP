@@ -170,6 +170,7 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
     <!-- ChartJS-->
     <script src="js/plugins/chartJs/Chart.min.js"></script>
     <script src="Pagination/NewOrder/script.js"></script>
+    <script src="JSfiles/NewOrder.js"></script>
 
 
     <div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;"><div class="modal-backdrop fade in"></div>

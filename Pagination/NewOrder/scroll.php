@@ -40,13 +40,13 @@ function showData($data,$con,$limit){
                                 <a class="collapse-link" href="">
                                     <i class="fa fa-chevron-up"></i>
                                 </a>
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="http://a.localhost/NewOrder.php#">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     <i class="fa fa-wrench"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-user">
-                                    <li><a href="http://a.localhost/NewOrder.php#">Config option 1</a>
+                                    <li><a href="#">Config option 1</a>
                                     </li>
-                                    <li><a href="http://a.localhost/NewOrder.php#">Config option 2</a>
+                                    <li><a href="#">Config option 2</a>
                                     </li>
                                 </ul>
                                 <a class="close-link" href="">
@@ -55,7 +55,7 @@ function showData($data,$con,$limit){
                             </div>
                         </div>
                         <div class="ibox-content">
-                            <div class="carousel slide" id="carouse'.$row['Product_Id'].'">
+                            <div class="carousel slide" id="carousel'.$row['Product_Id'].'">
                                 <div class="carousel-inner">
                                     <div class="item active">
                                         <img alt="image" class="img-responsive" src="http://a.localhost/img/p_big3.jpg">
@@ -68,10 +68,10 @@ function showData($data,$con,$limit){
                                     </div>
 
                                 </div>
-                                <a data-slide="prev" href="http://a.localhost/NewOrder.php#carousel'.$row['Product_Name'].'" class="left carousel-control">
+                                <a data-slide="prev" href="#carousel'.$row['Product_Name'].'" class="left carousel-control">
                                     <span class="icon-prev"></span>
                                 </a>
-                                <a data-slide="next" href="http://a.localhost/NewOrder.php#carousel'.$row['Product_Name'].'" class="right carousel-control">
+                                <a data-slide="next" href="#carousel'.$row['Product_Name'].'" class="right carousel-control">
                                     <span class="icon-next"></span>
                                 </a>
                             </div>
@@ -85,6 +85,7 @@ function showData($data,$con,$limit){
                                    <strong>Price:</strong> '.$row['Price'].'                                </p>
                                 
                                 <form class="NewOrder">
+                                    <input type="hidden" name=CompanyDivision" value="'.$row['Company_Division_Id'].'">
                                     <input type="hidden" name="ProductTitle" value="'.$row['Product_Name'].'">
                                     <input type="hidden" name="ProductDescription" value="'.$row['Product_Description'].'">
                                     <input type="hidden" name="ProductId" value="'.$row['Product_Id'].'">

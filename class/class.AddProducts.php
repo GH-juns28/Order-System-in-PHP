@@ -28,14 +28,15 @@ class AddProducts{
 
 }
 
+/**
 $AddProducts = new AddProducts();
+
 for ($i = 1; $i <= 2000; $i++) {
     $AddProducts->AddProducts(1,1,$i,$i,$i);
     echo $i;
 }
 
-
-
+**/
 
 
 
