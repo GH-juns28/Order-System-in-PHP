@@ -68,10 +68,10 @@ function showData($data,$con,$limit){
                                     </div>
 
                                 </div>
-                                <a data-slide="prev" href="#carousel'.$row['Product_Name'].'" class="left carousel-control">
+                                <a data-slide="prev" href="#carousel'.$row['Product_Id'].'" class="left carousel-control">
                                     <span class="icon-prev"></span>
                                 </a>
-                                <a data-slide="next" href="#carousel'.$row['Product_Name'].'" class="right carousel-control">
+                                <a data-slide="next" href="#carousel'.$row['Product_Id'].'" class="right carousel-control">
                                     <span class="icon-next"></span>
                                 </a>
                             </div>
@@ -81,6 +81,8 @@ function showData($data,$con,$limit){
                               
                                 <p>
                                     '.$row['Product_Description'].'                           </p>
+                                    <p>
+                                   <strong>In Stock:</strong> '.$row['Quantity'].'                                </p>
                                 <p>
                                    <strong>Price:</strong> '.$row['Price'].'                                </p>
                                 

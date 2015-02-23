@@ -13,22 +13,19 @@ class ManageUsers{
 	function registerUsers($username,$email,$password,$User_type){
 
 		$query = $this->link->prepare("INSERT INTO users (username,email,password,User_type) VALUES (?,?,?,?)");
-		$values = array($userName,$password,$email,$User_type);
+		$values = array($username,$email,$password,$User_type);
 		$query->execute($values);
-		$counts = $query->rowCount();
-		if($rowCount > 0){
-			$result = $query->fetchAll();
-			return $result;
-		}	
+		$rowCount = $query->rowCount();
+		return $rowCount;
 	
 
 		
 	}
 
-	function Userinfo($firstName,$lastName,$user_id,$address,$mobileNumber){
+	function Userinfo($firstName,$lastName,$user_id,$address,$mobileNumber,$gender){
 
-		$queryInsertUserinfo("INSERT INTO users_info (First_Name,Last_Name,User_id,Address,Contact_Number) VALUES (?,?,?,?,?)");
-		$InsertUsefinoValues = array($firstName,$lastName,$user_id,$address,$mobileNumber);
+		$queryInsertUserinfo = $this->link->prepare("INSERT INTO user_info (First_Name,Last_Name,User_id,Address,Contact_Number,Gender_Type) VALUES (?,?,?,?,?,?)");
+		$InsertUsefinoValues = array($firstName,$lastName,$user_id,$address,$mobileNumber,$gender);
 		$queryInsertUserinfo->execute($InsertUsefinoValues);
 		$counts = $queryInsertUserinfo->rowCount();
 		return $counts;
@@ -38,7 +35,7 @@ class ManageUsers{
 	
 
 	function CheckUsername($username){
-		$query = $this->link->query("SELECT * from users where username = '".$username."'");
+		$query = $this->link->query("SELECT * from `users` where username = '".$username."'");
 		$rowCount = $query->rowCount();
 		return $rowCount;
 
@@ -96,7 +93,11 @@ class ManageUsers{
 
 /*
 $ManageUsers = new ManageUsers();
-$ManageUsers->registerUsers("Rex","Adrivan","adrivanrex","rexadrivan","adrivanrex@gmail.com","1","09358661725","Iligan City","1");
+$username = 'a';
+$email = 'a@a.com';
+$password = 'a';
+$User_type = 1;
+$ManageUsers->registerUsers($username,$email,$password,$User_type);
 var_dump($ManageUsers);
 */
 

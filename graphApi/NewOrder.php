@@ -14,6 +14,8 @@ $Quantity = $_GET['ProductQuantity'];
 $Product_Id = $_GET['ProductId'];
 
 
+
+
 $NewOrder = new Products();
 $User_Id = $_SESSION['User_Id'];
 $NewOrder = $NewOrder->NewOrder($User_Id,$Quantity,$Product_Id);

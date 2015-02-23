@@ -190,6 +190,13 @@ $CheckUserInfo = $CheckUserInfo->CheckUserInfo($_SESSION['email'],$_SESSION['pas
                                 </div>
                                 <div class="hr-line-dashed"></div>
 
+                                <div class="form-group"><label class="col-sm-2 control-label">Product Quantity</label>
+
+                                    <div class="col-sm-10"><input type="text" name="Quantity" class="form-control"></div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+
+
                                 <div class="form-group"><label class="col-sm-2 control-label">Price</label>
 
                                     <div class="col-sm-10"><input type="text" name="ProductPrice" class="form-control"></div>

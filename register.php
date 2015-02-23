@@ -24,33 +24,33 @@
 
             </div>
             <p>Create account to see it in action.</p>
-            <form class="m-t" role="form" >
+            <form class="register m-t" role="form" >
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="First Name" required="">
+                    <input type="text" name="First_Name" class="form-control" placeholder="First Name" required="">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Last Name" required="">
+                    <input type="text" name="Last_Name" class="form-control" placeholder="Last Name" required="">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="User Name" required="">
+                    <input type="text" name="User_Name" class="form-control" placeholder="User Name" required="">
                 </div>
 
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required="">
+                    <input type="password" name="Password" class="form-control" placeholder="Password" required="">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Confirm Password" required="">
+                    <input type="password" name="Confirm_Password" class="form-control" placeholder="Confirm Password" required="">
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email" required="">
+                    <input type="email" name="Email" class="form-control" placeholder="Email" required="">
                 </div>
 
                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Mobile Number" required="">
+                    <input type="text" name="Mobile_Number" class="form-control" placeholder="Mobile Number" required="">
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Address" required="">
+                    <input type="text" name="Address" class="form-control" placeholder="Address" required="">
                 </div>
 
                 <div class="form-group">
@@ -79,6 +79,7 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- iCheck -->
     <script src="js/plugins/iCheck/icheck.min.js"></script>
+    <script src="JSfiles/register.js"></script>
     <script>
         $(document).ready(function(){
             $('.i-checks').iCheck({

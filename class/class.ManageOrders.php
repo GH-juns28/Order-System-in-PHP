@@ -27,6 +27,15 @@ class ManageOrders{
 		}
 	}
 
+	function getOrder($Product_Id){
+		$query = $this->link->query('select * from `order` left join product ON order.product_id = product.product_id where product.product_id=2');
+		$rowCount = $query->rowCount();
+		if($rowCount > 0){
+			
+			$result = $query->fetchAll();
+			return $result;
+		}
+	}
 
 
 	function ManageOrderTotalPrice($User_Id){

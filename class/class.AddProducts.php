@@ -11,9 +11,9 @@ class AddProducts{
 		return $this->link;
 	}
 
-	function AddProducts($CustomerId,$Company_Division_Id,$ProductName,$ProductDescription,$ProductPrice){
-		$query = $this->link->prepare("INSERT INTO product (Customer_Id,Company_Division_Id,Product_Name,Product_Description,Price) VALUES (?,?,?,?,?)");
-		$values = array($CustomerId,$Company_Division_Id,$ProductName,$ProductDescription,$ProductPrice);
+	function AddProducts($CustomerId,$Company_Division_Id,$ProductName,$ProductDescription,$ProductPrice,$Quantity){
+		$query = $this->link->prepare("INSERT INTO product (Customer_Id,Company_Division_Id,Product_Name,Product_Description,Price,Quantity) VALUES (?,?,?,?,?,?)");
+		$values = array($CustomerId,$Company_Division_Id,$ProductName,$ProductDescription,$ProductPrice,$Quantity);
 		$query->execute($values);
 		$counts = $query->rowCount();
 		return $counts;

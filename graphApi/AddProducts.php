@@ -8,9 +8,10 @@ $ProductName = $_GET['ProductName'];
 $ProductDescription = $_GET['ProductDescription'];
 $ProductPrice = $_GET['ProductPrice'];
 $Company_Division_Id = $_GET['CompanyDivision'];
+$Quantity = $_GET['Quantity'];
 
 $AddProducts = new AddProducts();
-$AddProducts->AddProducts($_SESSION['User_Id'],$Company_Division_Id,$ProductName,$ProductDescription,$ProductPrice);
+$AddProducts->AddProducts($_SESSION['User_Id'],$Company_Division_Id,$ProductName,$ProductDescription,$ProductPrice,$Quantity);
 if($AddProducts){
 	$array = array(
 		    "output" => "1"
