@@ -10,6 +10,10 @@ $sessionCheck->checkSession($_SESSION);
 include_once('class/class.ManageUser.php');
 $CheckUserInfo = new ManageUsers();
 $CheckUserInfo = $CheckUserInfo->CheckUserInfo($_SESSION['email'],$_SESSION['password']);
+$CheckUserType = new ManageUsers();
+$CheckUserType = $CheckUserType->CheckUserType($_SESSION['User_Id']);
+$CheckIfSalesman = new ManageUsers();
+$CheckIfSalesman->CheckIfSalesman($CheckUserType[0][0]);
 
 
 include_once('class/class.Products.php');
@@ -70,12 +74,16 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
                 </li>
                 
                 
-                
+                <?php
+
+                ?>
+
                 <li>
                     <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Salesman</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li><a href="ManageProducts.php">Manage Products</a></li>
                         <li><a href="AddProducts.php">Add Products</a></li>
+                        <li><a href="SalesmanManageOrder.php">Manage Orders</a></li>
                     </ul>
                 </li>
               

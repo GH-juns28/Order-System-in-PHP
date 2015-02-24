@@ -17,8 +17,13 @@ $SalesMan = $ManageUser->CheckUserType($_SESSION['User_Id']);
 //$CheckIfSalesman = $ManageUser->CheckIfSalesman($SalesMan[0][0]);
 $CheckUserInfo = new ManageUsers();
 $CheckUserInfo = $CheckUserInfo->CheckUserInfo($_SESSION['email'],$_SESSION['password']);
+
+$CheckUserType = new ManageUsers();
+$CheckUserType = $CheckUserType->CheckUserType($_SESSION['User_Id']);
+$CheckIfSalesman = new ManageUsers();
+$CheckIfSalesman->CheckIfSalesman($CheckUserType[0][0]);
 ?>
-<!DOCTYPE html>
+
 <html>
 
 <head>
@@ -75,6 +80,7 @@ $CheckUserInfo = $CheckUserInfo->CheckUserInfo($_SESSION['email'],$_SESSION['pas
                     <ul class="nav nav-second-level">
                         <li><a href="ManageProducts.php">Manage Products</a></li>
                         <li><a href="AddProducts.php">Add Products</a></li>
+                        <li><a href="SalesmanManageOrder.php">Manage Orders</a></li>
                     </ul>
                 </li>
               

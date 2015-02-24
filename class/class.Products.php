@@ -53,6 +53,32 @@ class Products{
 		
 	}
 
+	function makePayment($User_Id){
+		$queryOrders = $this->link->query("SELECT * FROM `order` WHERE User_Id = '".$User_Id."'");
+		$rowCount = $queryOrders->rowCount();
+		if($rowCount > 0){
+			$result = $queryOrders->fetchAll();
+			return $result;
+		}
+	}
+
+	function makePaymentCustomerInfo($Product_Id,$Quantity,$User_Id){
+		$queryOrders = $this->link->query("INSERT INTO `customer_product` (`Product_Id`,`Quantity`,`User_Id`) VALUES ('".$Product_Id."','".$Quantity."','".$User_Id."');");	
+		$rowCount = $queryOrders->rowCount();
+		if($rowCount > 0){
+			$result = $queryOrders->fetchAll();
+			return $result;
+		}
+
+	
+
+	}
+
+	function deleteOrder($User_Id){
+		$query = $this->link->query("DELETE FROM `order` WHERE User_Id = '".$User_Id."'");
+		return $rowCount = $query->rowCount(); 
+	}
+
 	
 }
 

@@ -12,6 +12,9 @@ $sessionCheck->checkSession($_SESSION);
 include_once('class/class.ManageUser.php');
 $CheckUserInfo = new ManageUsers();
 $CheckUserInfo = $CheckUserInfo->CheckUserInfo($_SESSION['email'],$_SESSION['password']);
+$CheckUserType = new ManageUsers();
+$CheckUserType = $CheckUserType->CheckUserType($_SESSION['User_Id']);
+$CheckIfSalesman = new ManageUsers();
 
 
 ?>
@@ -65,13 +68,20 @@ $CheckUserInfo = $CheckUserInfo->CheckUserInfo($_SESSION['email'],$_SESSION['pas
                 
                 
                 
-                <li>
-                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Salesman</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li><a href="ManageProducts.php">Manage Products</a></li>
-                        <li><a href="AddProducts.php">Add Products</a></li>
-                    </ul>
-                </li>
+                <?php
+                    if($CheckUserType[0][0] == 2){
+                        ?>
+                            <li>
+                                <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Salesman</span><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="ManageProducts.php">Manage Products</a></li>
+                                    <li><a href="AddProducts.php">Add Products</a></li>
+                                    <li><a href="SalesmanManageOrder.php">Manage Orders</a></li>
+                                </ul>
+                            </li>
+                        <?php
+                    }
+                ?>
               
                 <li>
                     <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Customer</span><span class="fa arrow"></span></a>
@@ -230,7 +240,8 @@ $CheckUserInfo = $CheckUserInfo->CheckUserInfo($_SESSION['email'],$_SESSION['pas
                             </table>
                             
             <div class="text-right">
-                                <button class="btn btn-primary"><i class="fa fa-dollar"></i> Make A Payment</button>
+                                
+                                <button class="makePayment btn btn-primary"><i class="fa fa-dollar"></i> Make A Payment</button>
                                 <button class="btn btn-primary" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
                                 
 
@@ -263,6 +274,7 @@ $CheckUserInfo = $CheckUserInfo->CheckUserInfo($_SESSION['email'],$_SESSION['pas
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="JSfiles/ManageOrder.js"></script>
+    <script src="JSfiles/makePayment.js"></script>
 
     <!-- Flot -->
     <script src="js/plugins/flot/jquery.flot.js"></script>

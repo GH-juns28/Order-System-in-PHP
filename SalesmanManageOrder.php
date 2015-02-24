@@ -4,7 +4,6 @@
     Project By: Alvin 
     Tutor: Rex Adrivan    
 */
-
 include_once('class/class.SessionCheck.php');
 $sessionCheck = new SessionCheck();
 $sessionCheck->checkSession($_SESSION);
@@ -13,9 +12,17 @@ $CheckUserInfo = new ManageUsers();
 $CheckUserInfo = $CheckUserInfo->CheckUserInfo($_SESSION['email'],$_SESSION['password']);
 $CheckUserType = new ManageUsers();
 $CheckUserType = $CheckUserType->CheckUserType($_SESSION['User_Id']);
+$CheckIfSalesman = new ManageUsers();
+$CheckIfSalesman->CheckIfSalesman($CheckUserType[0][0]);
 
+
+include_once('class/class.Products.php');
+
+$ShowProduct = new Products();
+$ShowProduct = $ShowProduct->ViewProducts(10,1);
 
 ?>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -23,7 +30,7 @@ $CheckUserType = $CheckUserType->CheckUserType($_SESSION['User_Id']);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Inventory</title>
+    <title>Alvin Thesis | Dashboard v.4</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -37,7 +44,9 @@ $CheckUserType = $CheckUserType->CheckUserType($_SESSION['User_Id']);
 </head>
 
 <body>
+
     <div id="wrapper">
+
     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav" id="side-menu">
@@ -61,9 +70,8 @@ $CheckUserType = $CheckUserType->CheckUserType($_SESSION['User_Id']);
                     </div>
                 </li>
                 <li class="active">
-                    <a href="index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Home</span> <span></span></a>
+                    <a href="index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span></span></a>
                 </li>
-                
                 
                 
                 <?php
@@ -80,7 +88,6 @@ $CheckUserType = $CheckUserType->CheckUserType($_SESSION['User_Id']);
                         <?php
                     }
                 ?>
-                
               
                 <li>
                     <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Customer</span><span class="fa arrow"></span></a>
@@ -130,7 +137,54 @@ $CheckUserType = $CheckUserType->CheckUserType($_SESSION['User_Id']);
         
 
 
-        
+        <div class="row">   
+        <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Custom responsive table </h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-wrench"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#">Config option 1</a>
+                    </li>
+                    <li><a href="#">Config option 2</a>
+                    </li>
+                </ul>
+                <a class="close-link">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="row ">
+                
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+
+                        <th>Order Id</th>
+                        <th>Customer Name</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody page="2" class="InsertProductData">
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        </div>
+        </div>
+
+        </div>
 
 
         </div>
@@ -153,6 +207,8 @@ $CheckUserType = $CheckUserType->CheckUserType($_SESSION['User_Id']);
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <script src="Pagination/salesmanManageOrder/script.js"></script>
 
     <!-- Flot -->
     <script src="js/plugins/flot/jquery.flot.js"></script>
@@ -187,7 +243,6 @@ $CheckUserType = $CheckUserType->CheckUserType($_SESSION['User_Id']);
     <!-- ChartJS-->
     <script src="js/plugins/chartJs/Chart.min.js"></script>
 
-    
 </body>
 
 </html>

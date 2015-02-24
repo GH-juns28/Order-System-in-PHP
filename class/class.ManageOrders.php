@@ -54,6 +54,8 @@ class ManageOrders{
 		
 		return $result = $query->fetchAll();
 	}
+
+	
 	
 }
 
