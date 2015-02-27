@@ -9,7 +9,9 @@ header('Content-Type: application/json');
 $users = new ManageUsers();
 $checkLogin = $users->LoginUser($_SESSION['email'],$_SESSION['password']);
 $insertCustomerProduct = new Products();
+$showProductInfo = new Products();
 $deleteOrder = new Products();
+$products = new Products();
 if($checkLogin){
 	$Products = new Products();
 	$MakePayment = $Products->makePayment($_SESSION['User_Id']);
@@ -19,6 +21,8 @@ if($checkLogin){
 		$Order_Id = $MakePayment[$i]['Order_Id'];
 		$Quantity = $MakePayment[$i]['Quantity'];
 		$insertCustomerProduct->makePaymentCustomerInfo($Product_Id,$Quantity,$_SESSION['User_Id']);
+		//$deductQuantity = $products->deductQuantity($Product_Id,$Quantity);
+
 		$deleteOrder->deleteOrder($_SESSION['User_Id']);
 		if($deleteOrder){
 			$array = array(

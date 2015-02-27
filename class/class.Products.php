@@ -39,7 +39,7 @@ class Products{
 		$Price =  $getData[0]['Price'];
 		$Total_Price = $Quantity*$Price;
 		
-		$query = $this->link->query("INSERT INTO `order` (`Order_Id`, `User_Id`, `Quantity`, `Total`, `Product_Id`) VALUES (NULL, '".$User_Id."', '".$Quantity."', '".$Total_Price."', '".$Product_Id."');");
+		$query = $this->link->query("INSERT INTO `order` (`Order_Id`, `User_Id`, `Quantity`, `Total`, `Product_Id`,`Order_Date`) VALUES (NULL, '".$User_Id."', '".$Quantity."', '".$Total_Price."', '".$Product_Id."','".date("Y-m-d H:i:s")."');");
 		
 		
 	}
@@ -63,7 +63,7 @@ class Products{
 	}
 
 	function makePaymentCustomerInfo($Product_Id,$Quantity,$User_Id){
-		$queryOrders = $this->link->query("INSERT INTO `customer_product` (`Product_Id`,`Quantity`,`User_Id`) VALUES ('".$Product_Id."','".$Quantity."','".$User_Id."');");	
+		$queryOrders = $this->link->query("INSERT INTO `customer_product` (`Product_Id`,`Quantity`,`User_Id`,`Customer_Order_Date`) VALUES ('".$Product_Id."','".$Quantity."','".$User_Id."','".date("Y-m-d H:i:s")."');");	
 		$rowCount = $queryOrders->rowCount();
 		if($rowCount > 0){
 			$result = $queryOrders->fetchAll();

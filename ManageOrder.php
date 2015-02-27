@@ -169,6 +169,7 @@ $CheckIfSalesman = new ManageUsers();
                         <th>Price </th>
                         <th>Quantity</th>
                         <th>Total Price</th>    
+                        <th>Status</th>
                     </tr>
                     </thead>
                     <tbody id="OrdersTbody">
@@ -205,6 +206,7 @@ $CheckIfSalesman = new ManageUsers();
                                             <td><?php echo $Product_Price;?></td>
                                             <td><?php echo $Product_Quantity;?></span></td>
                                             <td><?php echo $Product_Total_Price;?></td>
+                                            <td>Unpayed</td>
                                             <td><a href="#"><button class="btn btn-primary"><i class="fa fa-times"></i></button></i></a></td>
                                         </tr>
                                         </form>

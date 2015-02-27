@@ -172,7 +172,10 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
                         <th>Order Id</th>
                         <th>Customer Name</th>
                         <th>Date</th>
-                        <th>Total</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total Price</th>
+                        <th>Status</th>
                     </tr>
                     </thead>
                     <tbody page="2" class="InsertProductData">

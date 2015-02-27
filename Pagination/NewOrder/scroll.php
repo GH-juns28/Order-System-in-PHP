@@ -93,7 +93,7 @@ function showData($data,$con,$limit){
                                     <input type="hidden" name="ProductId" value="'.$row['Product_Id'].'">
                                     <input type="hidden" name="ProductPrice" value="'.$row['Price'].'">
                                     <input type="quantity" name="ProductQuantity" placeholder="Quantity" class="form-control">
-                                    <button type="button submit" class="btn btn-primary btn-sm btn-block">Buy Item</button>
+                                    <button type="button submit" class="btn btn-primary btn-sm btn-block">Order</button>
                                    
                             </form>
                             </div>

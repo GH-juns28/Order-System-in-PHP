@@ -41,6 +41,7 @@ function showData($data,$con,$limit){
                                 <td>'.$row['Price'].'</td>
                                 <td>1</td>
                                 <td>'.$row['Quantity'].'</td>
+                                
                                 <td>
                                 <form class="testing">
                                 <input type="hidden" name="Product_Id" value="'.$row['Product_Id'].'">
