@@ -197,7 +197,7 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
                                             <h4 class="modal-title">Info</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <p><strong>Product Successfully Ordered</strong> .</p>
+                                            <p id="alert16message"><strong>Product Successfully Ordered</strong> .</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>

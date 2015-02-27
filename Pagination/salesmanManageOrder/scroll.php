@@ -43,7 +43,8 @@ function showData($data,$con,$limit){
         array_push($products, $showProduct);
       }
       
-      $str.='
+      if($products){
+        $str.='
       
        <tr>
                                 <td>'.$row['Customer_Product_Id'].'</td>
@@ -66,6 +67,8 @@ function showData($data,$con,$limit){
                                 </form></td>
                             </tr>
                             ';
+      }
+      
    }
    $str.="<input type='hidden' class='nextpage' value='".($page+1)."'><input type='hidden' class='isload' value='true'>";
    }else{

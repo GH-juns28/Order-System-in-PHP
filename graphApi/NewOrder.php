@@ -19,11 +19,22 @@ $Product_Id = $_GET['ProductId'];
 $NewOrder = new Products();
 $User_Id = $_SESSION['User_Id'];
 $NewOrder = $NewOrder->NewOrder($User_Id,$Quantity,$Product_Id);
+//var_dump($NewOrder);
+
 if($NewOrder == null){
 	$array = array(
-		    "output" => "1"
-		);
+		    "output" => "1",
+		    "message" => "Product Succeffully ordered"
+		);	
 		echo json_encode($array);
+}
+if ($NewOrder == 1) {
+
+		$array = array(
+		    "output" => "2",
+		    "message" => "Not enough stock available"
+		);
+		echo json_encode($array);	
 }
 
 ?>

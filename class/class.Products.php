@@ -38,8 +38,13 @@ class Products{
 		$getData = $queryGetProductInfo->fetchAll();
 		$Price =  $getData[0]['Price'];
 		$Total_Price = $Quantity*$Price;
-		
-		$query = $this->link->query("INSERT INTO `order` (`Order_Id`, `User_Id`, `Quantity`, `Total`, `Product_Id`,`Order_Date`) VALUES (NULL, '".$User_Id."', '".$Quantity."', '".$Total_Price."', '".$Product_Id."','".date("Y-m-d H:i:s")."');");
+		if($Quantity > $getData[0]['Quantity']){
+			return $rowCount = $queryGetProductInfo->rowCount(); 
+		}else{
+			$query = $this->link->query("INSERT INTO `order` (`Order_Id`, `User_Id`, `Quantity`, `Total`, `Product_Id`,`Order_Date`) VALUES (NULL, '".$User_Id."', '".$Quantity."', '".$Total_Price."', '".$Product_Id."','".date("Y-m-d H:i:s")."');");
+			
+		}
+
 		
 		
 	}
@@ -79,6 +84,15 @@ class Products{
 		return $rowCount = $query->rowCount(); 
 	}
 
+	function deductQuantity($Product_Id,$Quantity){
+
+		$query = $this->link->query("UPDATE product SET Quantity = ".$Quantity."  WHERE Product_Id=".$Product_Id."");
+		return $result = $query->fetchAll();
+	}
+	function ShowProducts(){
+		$query = $this->link->query("SELECT * FROM product");
+		return $result = $query->fetchAll();
+	}
 	
 }
 
@@ -102,5 +116,7 @@ $User_Id = 1;
 $NewOrder = $NewOrder->NewOrder(1,1,32);
 var_dump($NewOrder);
 */
+
+
 
 ?>

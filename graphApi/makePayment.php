@@ -21,18 +21,20 @@ if($checkLogin){
 		$Order_Id = $MakePayment[$i]['Order_Id'];
 		$Quantity = $MakePayment[$i]['Quantity'];
 		$insertCustomerProduct->makePaymentCustomerInfo($Product_Id,$Quantity,$_SESSION['User_Id']);
-		//$deductQuantity = $products->deductQuantity($Product_Id,$Quantity);
-
+		
 		$deleteOrder->deleteOrder($_SESSION['User_Id']);
-		if($deleteOrder){
-			$array = array(
+		$productInfo = $products->ShowProducts($Product_Id);
+		$Quantity = $productInfo[0]['Quantity'] - $Quantity;
+		$deductQuantity = $products->deductQuantity($Product_Id,$Quantity);
+
+
+	}
+	if($MakePayment){
+		$array = array(
 			    "output" => "1"
 			);
 			echo json_encode($array);
-		}
-
 	}
-
 }
 
 ?>

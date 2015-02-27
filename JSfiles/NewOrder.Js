@@ -6,8 +6,15 @@ $("#ProductContent").on('submit',".NewOrder",function(){
                 $.getJSON(fileUrl, function(data){
                     console.log(data);
                     if(data.output == 1){
+                        $("p#alert16message").empty();
+                        $("p#alert16message").append(data.message);
                         $("#myModal6").modal('show');
                         
+                    }
+                    if(data.output == 2){
+                        $("p#alert16message").empty();
+                        $("p#alert16message").append(data.message);
+                        $("#myModal6").modal('show');
                     }
                      
                 });
