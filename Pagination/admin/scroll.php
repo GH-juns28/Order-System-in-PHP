@@ -49,18 +49,14 @@ function showData($data,$con,$limit){
        <tr>
                                 <td>'.$row['Customer_Product_Id'].'</td>
                                 <td>'.$row['Username'].'</td>
-                                <td>'.$row['Customer_Order_Date'].'</td>
-                                <td>'.$row['Quantity'].'</td>
-                                <td>'.$products[0][0]['Price'].'</td>
-                                <td>'.$products[0][0]['Price']*$row['Quantity'].'</td>
-                                <td>pending approval</td>
+                               
                                 <td>
                                 <form class="testing">
                                 <input type="hidden" name="Product_Id" value="'.$row['Product_Id'].'">
                                 <div class="text-right">
                                 
-                                <button class="btn btn-primary">Confirm</button>
-                                <button class="btn btn-primary">Cancel</button>
+                                <button class="makePayment btn btn-primary"> View</button>
+                                
 
                             </div>
                                 </form></td>

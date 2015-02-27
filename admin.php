@@ -4,16 +4,22 @@
     Project By: Alvin 
     Tutor: Rex Adrivan    
 */
-
 include_once('class/class.SessionCheck.php');
 $sessionCheck = new SessionCheck();
 $sessionCheck->checkSession($_SESSION);
-include_once('class/class.ProductDivision.php');
 include_once('class/class.ManageUser.php');
-$ProductDivision = new ProductDivision();
-$ManageUser = new ManageUsers();
-$SalesMan = $ManageUser->CheckUserType($_SESSION['User_Id']);
-//$CheckIfSalesman = $ManageUser->CheckIfSalesman($SalesMan[0][0]);
+$CheckUserInfo = new ManageUsers();
+$CheckUserInfo = $CheckUserInfo->CheckUserInfo($_SESSION['email'],$_SESSION['password']);
+$CheckUserType = new ManageUsers();
+$CheckUserType = $CheckUserType->CheckUserType($_SESSION['User_Id']);
+$CheckIfSalesman = new ManageUsers();
+$CheckIfSalesman->CheckIfSalesman($CheckUserType[0][0]);
+
+
+include_once('class/class.Products.php');
+
+$ShowProduct = new Products();
+$ShowProduct = $ShowProduct->ViewProducts(10,1);
 
 ?>
 <!DOCTYPE html>
@@ -38,7 +44,9 @@ $SalesMan = $ManageUser->CheckUserType($_SESSION['User_Id']);
 </head>
 
 <body>
+
     <div id="wrapper">
+
     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav" id="side-menu">
@@ -47,7 +55,7 @@ $SalesMan = $ManageUser->CheckUserType($_SESSION['User_Id']);
                             <img alt="image" class="img-circle" src="https://graph.facebook.com/radrivan/picture" />
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Alvin Caspe</strong>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $CheckUserInfo[0]['Username'];?></strong>
                              </span> <span class="text-muted text-xs block">Software Engineer <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="profile.html">Profile</a></li>
@@ -61,25 +69,30 @@ $SalesMan = $ManageUser->CheckUserType($_SESSION['User_Id']);
                         IN+
                     </div>
                 </li>
-                <li>
+                <li class="active">
                     <a href="index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span></span></a>
                 </li>
                 
                 
-                
-                
-                <li>
-                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Products</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li><a href="ManageProducts.php">Manage Products</a></li>
-                        <li><a href="AddProducts.php">Add Products</a></li>
-                    </ul>
-                </li>
+                <?php
+                    if($CheckUserType[0][0] == 2){
+                        ?>
+                            <li>
+                                <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Salesman</span><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="ManageProducts.php">Manage Products</a></li>
+                                    <li><a href="AddProducts.php">Add Products</a></li>
+                                    <li><a href="SalesmanManageOrder.php">Manage Orders</a></li>
+                                </ul>
+                            </li>
+                        <?php
+                    }
+                ?>
               
                 <li>
-                    <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Order</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Customer</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="NewOrder.php">New Order</a></li>
+                        <li><a href="NewOrder.php">Order</a></li>
                         <li><a href="ManageOrder.php">Manage Order</a></li> 
                     </ul>
                 </li>
@@ -103,7 +116,7 @@ $SalesMan = $ManageUser->CheckUserType($_SESSION['User_Id']);
         </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <span class="m-r-sm text-muted welcome-message">Welcome to Alvin Thesis.</span>
+                    <span class="m-r-sm text-muted welcome-message">Welcome</span>
                 </li>
                 
                 
@@ -121,101 +134,66 @@ $SalesMan = $ManageUser->CheckUserType($_SESSION['User_Id']);
 
 
         <div class="wrapper wrapper-content">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ibox float-e-margins">  
-                        <div class="ibox-title">
-                            <h5>Add Products <small>on your system!</small></h5>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-wrench"></i>
-                                </a>
-                                <ul class="dropdown-menu dropdown-user">
-
-                                    <li><a href="#">Config option 1</a>
-                                    </li>
-                                    <li><a href="#">Config option 2</a>
-                                    </li>
-                                </ul>
-                                <a class="close-link">
-                                    <i class="fa fa-times"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="ibox-content">
-                            <form method="get" name="AddProduct" class="AddProduct form-horizontal">
-                            
-                                <div class="hr-line-dashed"></div>
-
-                                <div class="form-group"><label class="col-sm-2 control-label">Company Division</label>
-                                         <?php
-
-                                        $ProductDivision = $ProductDivision->GetallCompany();
-                                        $i = count($ProductDivision);
-
-
-                                        ?>
-                                    <div class="col-sm-10"><select class="form-control m-b" name="CompanyDivision">
-                                            <?php
-                                                for ($x = 0; $x < $i; $x++) {
-
-                                                    ;?>
-                                                        <option value="<?php echo $ProductDivision[$x]['Company_Division_Id'];?>"><?php echo $ProductDivision[$x]['Division_Name'];?></option>
-                                                       
-                                                    <?php
-                                                } 
-                                            ?>
-
-                                            
-                                    </select></div>
-                                </div>
-
-                                <div class="hr-line-dashed"></div>
-
-                                <div class="form-group"><label class="col-sm-2 control-label">Product Name</label>
-
-                                    <div class="col-sm-10"><input type="text" name="ProductName" class="form-control"></div>
-                                </div>
-
-                                <div class="hr-line-dashed"></div>
-
-                                <div class="form-group"><label class="col-sm-2 control-label">Product Description</label>
-
-                                    <div class="col-sm-10"><input type="text" name="ProductDescription" class="form-control"></div>
-                                </div>
-                                <div class="hr-line-dashed"></div>
-
-                                <div class="form-group"><label class="col-sm-2 control-label">Price</label>
-
-                                    <div class="col-sm-10"><input type="text" name="ProductPrice" class="form-control"></div>
-                                </div>
-                                
-
-                                <div class="form-group">
-                                    <div class="col-sm-4 col-sm-offset-2">
-                                        <button class="btn btn-primary" type="submit">Submit</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
         
+
+
+        <div class="row">   
+        <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Custom responsive table </h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-wrench"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#">Config option 1</a>
+                    </li>
+                    <li><a href="#">Config option 2</a>
+                    </li>
+                </ul>
+                <a class="close-link">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="row ">
+                
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Salesman Name</th>
+                    </tr>
+                    </thead>
+                    <tbody page="2" class="InsertProductData">
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        </div>
+        </div>
+
+        </div>
 
 
         </div>
 
 
         <div class="footer">
-            
+            <div class="pull-right">
+                10GB of <strong>250GB</strong> Free.
+            </div>
             <div>
-                <strong>Copyright</strong> Alvin Company &copy; 2014-2015
+                <strong>Copyright</strong> Example Company &copy; 2014-2015
             </div>
         </div>
 
@@ -228,6 +206,16 @@ $SalesMan = $ManageUser->CheckUserType($_SESSION['User_Id']);
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
+    <script src="Pagination/admin/script.js"></script>
+
+    <!-- Flot -->
+    <script src="js/plugins/flot/jquery.flot.js"></script>
+    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="js/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="js/plugins/flot/jquery.flot.pie.js"></script>
+    <script src="js/plugins/flot/jquery.flot.symbol.js"></script>
+    <script src="js/plugins/flot/curvedLines.js"></script>
 
     <!-- Peity -->
     <script src="js/plugins/peity/jquery.peity.min.js"></script>
@@ -252,24 +240,6 @@ $SalesMan = $ManageUser->CheckUserType($_SESSION['User_Id']);
 
     <!-- ChartJS-->
     <script src="js/plugins/chartJs/Chart.min.js"></script>
-    <script src="JSfiles/AddProduct.js"></script>
-
-    <div class="modal inmodal fade in" id="myModal6" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;"><div class="modal-backdrop fade in"></div>
-                                <div class="modal-dialog modal-sm">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                            <h4 class="modal-title">Info</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p><strong>Product Successfully Added</strong> .</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
 </body>
 
