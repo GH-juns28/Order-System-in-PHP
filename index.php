@@ -1,9 +1,5 @@
 <?php
 
-/*
-    Project By: Alvin 
-    Tutor: Rex Adrivan    
-*/
 
 include_once('class/class.SessionCheck.php');
 $sessionCheck = new SessionCheck();
@@ -23,7 +19,7 @@ $CheckUserType = $CheckUserType->CheckUserType($_SESSION['User_Id']);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Inventory</title>
+    <title>Commonwealth Foods Inc.</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -37,24 +33,18 @@ $CheckUserType = $CheckUserType->CheckUserType($_SESSION['User_Id']);
 </head>
 
 <body>
+
     <div id="wrapper">
     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="https://graph.facebook.com/radrivan/picture" />
+                            
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $CheckUserInfo[0]['Username'];?></strong>
-                             </span> <span class="text-muted text-xs block">Software Engineer <b class="caret"></b></span> </span> </a>
-                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="profile.html">Profile</a></li>
-                            <li><a href="contacts.html">Contacts</a></li>
-                            <li><a href="mailbox.html">Mailbox</a></li>
-                            <li class="divider"></li>
-                            <li><a href="login.html">Logout</a></li>
-                        </ul>
+                             
                     </div>
                     <div class="logo-element">
                         IN+
@@ -100,10 +90,9 @@ $CheckUserType = $CheckUserType->CheckUserType($_SESSION['User_Id']);
         <div class="row border-bottom">
         <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
-            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-            <form role="search" class="navbar-form-custom" method="post" action="http://webapplayers.com/inspinia_admin-v1.9/search_results.html">
-                <div class="form-group">
-                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+          
+                           <div class="form-group">
+                    
                 </div>
             </form>
         </div>
@@ -127,10 +116,12 @@ $CheckUserType = $CheckUserType->CheckUserType($_SESSION['User_Id']);
 
 
         <div class="wrapper wrapper-content">
-        
+           <center><img src="Comfoods.jpg"></center>
+       <center> <h2> COMMONWEALTH FOODS, INC.</h2> </center>
+       <h3>Company History:</h3>
+           <h4> COMMONWEALTH FOODS, INC. (Comfoods Inc.), a Filipino firm, is a conglomeration of three pioneering food-manufacturing companies, which were merged on September 30, 1968. The three corporations were: Commonwealth Foods, Inc., Philippine Food Industries, Inc., and the Filipinas Biscuit Corporation. With the merger, the three entities were reorganized into the Cofi Division (for Roasted and Instant Coffee products), Philfood Division (for Cocoa and Chocolate products), and Fibisco Division (for Biscuit products) of COMFOODS.</h4>
+        <img src="images.jpg"> <img src="hiro.jpg"> <img src="crunchies.jpg"><img src="chips.jpg">
 
-
-        
 
 
         </div>

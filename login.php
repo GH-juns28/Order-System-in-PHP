@@ -11,7 +11,7 @@ $session->loginSessionCheck($_SESSION);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Thesis | Login 2</title>
+    <title>Commonwealth Foods Inc.| Login 2</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -22,20 +22,13 @@ $session->loginSessionCheck($_SESSION);
 
 </head>
 
-<body class="gray-bg">
+<body class="gray-bg" background="Company.jpg">
 
     <div class="loginColumns animated fadeInDown">
         <div class="row">
 
             <div class="col-md-6">
-                <h2 class="font-bold">Welcome</h2>
-
-                <p>
-                   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                <p>
-                    <small>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</small>
-                </p>
-
+                
             </div>
             <div class="col-md-6">
                 <div class="ibox-content">
@@ -59,7 +52,7 @@ $session->loginSessionCheck($_SESSION);
                         <a class="btn btn-sm btn-white btn-block" href="register.php">Create an account</a>
                     </form>
                     <p class="m-t">
-                        <small>Inventory &copy; 2015</small>
+                        <small>Commonwealth Foods Inc. &copy; 2015</small>
                     </p>
                 </div>
             </div>
