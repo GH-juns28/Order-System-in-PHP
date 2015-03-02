@@ -133,7 +133,7 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
         </div>
 
 
-        <div class="wrapper wrapper-content">
+        <div id="tabledata" class="wrapper wrapper-content">
         
 
 
@@ -167,10 +167,15 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
-                    <tr>
+                     <tr>
 
-                        <th>ID</th>
-                        <th>Salesman Name</th>
+                        <th>Order Id</th>
+                        <th>Customer Name</th>
+                        <th>Date</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total Price</th>
+                        <th>Status</th>
                     </tr>
                     </thead>
                     <tbody page="2" class="InsertProductData">
@@ -205,8 +210,10 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    
 
     <script src="Pagination/admin/script.js"></script>
+    <script src="/JSfiles/adminManageOrder.js"></script>
 
     <!-- Flot -->
     <script src="js/plugins/flot/jquery.flot.js"></script>

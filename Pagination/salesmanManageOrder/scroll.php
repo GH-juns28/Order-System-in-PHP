@@ -43,6 +43,8 @@ function showData($data,$con,$limit){
         array_push($products, $showProduct);
       }
       
+      $salesmanDescription = $showProductInfo->salesmanDescription($row['salesman_status_order']);
+      
       if($products){
         $str.='
       
@@ -53,12 +55,12 @@ function showData($data,$con,$limit){
                                 <td>'.$row['Quantity'].'</td>
                                 <td>'.$products[0][0]['Price'].'</td>
                                 <td>'.$products[0][0]['Price']*$row['Quantity'].'</td>
-                                <td>pending approval</td>
+                                <td>'.$salesmanDescription[0][1].'</td>
                                 <td>
                                 <form class="testing">
+                                <input type="hidden" name="Customer_Product_Id" value="'.$row['Customer_Product_Id'].'">
                                 <input type="hidden" name="Product_Id" value="'.$row['Product_Id'].'">
                                 <div class="text-right">
-                                
                                 <button class="btn btn-primary">Confirm</button>
                                 <button class="btn btn-primary">Cancel</button>
 

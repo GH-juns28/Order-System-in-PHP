@@ -68,7 +68,7 @@ class Products{
 	}
 
 	function makePaymentCustomerInfo($Product_Id,$Quantity,$User_Id){
-		$queryOrders = $this->link->query("INSERT INTO `customer_product` (`Product_Id`,`Quantity`,`User_Id`,`Customer_Order_Date`) VALUES ('".$Product_Id."','".$Quantity."','".$User_Id."','".date("Y-m-d H:i:s")."');");	
+		$queryOrders = $this->link->query("INSERT INTO `customer_product` (`Product_Id`,`Quantity`,`User_Id`,`Customer_Order_Date`,`salesman_status_order`,`admin_status_order`) VALUES ('".$Product_Id."','".$Quantity."','".$User_Id."','".date("Y-m-d H:i:s")."',1,1);");	
 		$rowCount = $queryOrders->rowCount();
 		if($rowCount > 0){
 			$result = $queryOrders->fetchAll();

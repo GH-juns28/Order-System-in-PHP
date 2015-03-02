@@ -133,7 +133,7 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
         </div>
 
 
-        <div class="wrapper wrapper-content">
+        <div id="tabledata" class="wrapper wrapper-content">
         
 
 
@@ -212,7 +212,7 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
     <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
     <script src="Pagination/salesmanManageOrder/script.js"></script>
-
+    <script src="JSfiles/SalesManageOrder.js"></script>
     <!-- Flot -->
     <script src="js/plugins/flot/jquery.flot.js"></script>
     <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>

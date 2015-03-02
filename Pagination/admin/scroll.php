@@ -43,20 +43,26 @@ function showData($data,$con,$limit){
         array_push($products, $showProduct);
       }
       
+      $salesmanDescription = $showProductInfo->salesmanDescription($row['admin_status_order']);
+      
       if($products){
         $str.='
       
        <tr>
                                 <td>'.$row['Customer_Product_Id'].'</td>
                                 <td>'.$row['Username'].'</td>
-                               
+                                <td>'.$row['Customer_Order_Date'].'</td>
+                                <td>'.$row['Quantity'].'</td>
+                                <td>'.$products[0][0]['Price'].'</td>
+                                <td>'.$products[0][0]['Price']*$row['Quantity'].'</td>
+                                <td>'.$salesmanDescription[0][1].'</td>
                                 <td>
-                                <form class="testing">
+                                <form class="testing" action="#">
+                                <input type="hidden" name="Customer_Product_Id" value="'.$row['Customer_Product_Id'].'">
                                 <input type="hidden" name="Product_Id" value="'.$row['Product_Id'].'">
                                 <div class="text-right">
-                                
-                                <button class="makePayment btn btn-primary"> View</button>
-                                
+                                <button class="btn btn-primary">Confirm</button>
+                                <button class="btn btn-primary">Cancel</button>
 
                             </div>
                                 </form></td>

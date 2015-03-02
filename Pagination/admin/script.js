@@ -10,7 +10,7 @@
                   data:"actionfunction=showData&page=1",
         cache: false,
         success: function(response){
-		   $('#loading').hide();
+		  $('#loading').hide();
 		  $('.InsertProductData').html(response);
 		   
 		}
