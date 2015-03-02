@@ -21,6 +21,16 @@ include_once('class/class.Products.php');
 $ShowProduct = new Products();
 $ShowProduct = $ShowProduct->ViewProducts(10,1);
 
+// the message
+$msg = "First line of text\nSecond line of text";
+
+// use wordwrap() if lines are longer than 70 characters
+$msg = wordwrap($msg,70);
+
+// send email
+mail("adrivanrex@gmail.com","My subject",$msg);
+
+
 ?>
 <!DOCTYPE html>
 <html>
