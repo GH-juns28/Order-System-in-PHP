@@ -67,7 +67,7 @@ $CheckIfSalesman = new ManageUsers();
                 
                 
                 <?php
-                    if($CheckUserType[0][0] == 2 ||$CheckUserType[0][0] == 3){
+                    if($CheckUserType[0][0] == 3){
                         ?>
                             <li>
                                 <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Admin</span><span class="fa arrow"></span></a>
