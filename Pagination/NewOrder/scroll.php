@@ -54,6 +54,7 @@ function showData($data,$con,$limit){
                                 </a>
                             </div>
                         </div>
+                        <!--
                         <div class="ibox-content">
                             <div class="carousel slide" id="carousel'.$row['Product_Id'].'">
                                 <div class="carousel-inner">
@@ -75,6 +76,7 @@ function showData($data,$con,$limit){
                                     <span class="icon-next"></span>
                                 </a>
                             </div>
+                            --!>
                             <div>
                                 <div class="ibox-content profile-content">
                                 <h4><strong>Product Description</strong></h4>
