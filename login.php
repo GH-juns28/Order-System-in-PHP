@@ -57,15 +57,7 @@ $session->loginSessionCheck($_SESSION);
                 </div>
             </div>
         </div>
-        <hr/>
-        <div class="row">
-            <div class="col-md-6">
-                Copyright 
-            </div>
-            <div class="col-md-6 text-right">
-               <small>© 2014-2015</small>
-            </div>
-        </div>
+      
     </div>
 
     <!-- Login JS -->
