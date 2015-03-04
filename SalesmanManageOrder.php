@@ -71,9 +71,23 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
                     <a href="index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span></span></a>
                 </li>
                 
+              <?php
+                    if($CheckUserType[0][0] == 2 ||$CheckUserType[0][0] == 3){
+                        ?>
+                            <li>
+                                <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Admin</span><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="admin.php">Manage Products</a></li>
+                                </ul>
+                            </li>
+                        <?php
+                    }
+                ?>
+
                 
-                <?php
-                    if($CheckUserType[0][0] == 2){
+                
+                 <?php
+                    if($CheckUserType[0][0] == 2 ||$CheckUserType[0][0] == 3){
                         ?>
                             <li>
                                 <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Salesman</span><span class="fa arrow"></span></a>
