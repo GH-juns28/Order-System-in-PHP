@@ -30,7 +30,7 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Alvin Thesis | Dashboard v.4</title>
+    <title></title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -51,12 +51,10 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
         <div class="sidebar-collapse">
             <ul class="nav" id="side-menu">
                 <li class="nav-header">
-                    <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="https://graph.facebook.com/radrivan/picture" />
-                             </span>
+                    <div class="dropdown profile-element"> 
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $CheckUserInfo[0]['Username'];?></strong>
-                             </span> <span class="text-muted text-xs block">Software Engineer <b class="caret"></b></span> </span> </a>
+                             </span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="profile.html">Profile</a></li>
                             <li><a href="contacts.html">Contacts</a></li>
@@ -90,7 +88,7 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
                 <li>
                     <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Customer</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="NewOrder.php">Order</a></li>
+                        <li><a href="order.php">Order</a></li>
                         <li><a href="ManageOrder.php">Manage Order</a></li> 
                     </ul>
                 </li>

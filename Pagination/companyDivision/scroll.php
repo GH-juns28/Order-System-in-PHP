@@ -27,7 +27,7 @@ function showData($data,$con,$limit){
   $start = ($page-1)*$limit;
   }
   
-  $sql = "SELECT * FROM `product` WHERE `Company_Division_Id`= ".$data['Company_Division_Id']." ORDER BY Product_Id  desc limit $start,$limit";
+  $sql = "select * from company_division order by Company_Division_Id desc limit $start,$limit";
   $str='';
   $data = $con->query($sql);
   if($data!=null && $data->num_rows>0){
@@ -35,7 +35,7 @@ function showData($data,$con,$limit){
       $str.='<div class="col-lg-3">
                             <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>'.$row['Product_Name'].'</h5>
+                            <h5>'.$row['Division_Name'].'</h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link" href="">
                                     <i class="fa fa-chevron-up"></i>
@@ -55,7 +55,7 @@ function showData($data,$con,$limit){
                             </div>
                         </div>
                         <div class="ibox-content">
-                            <div class="carousel slide" id="carousel'.$row['Product_Id'].'">
+                            <div class="carousel slide" id="carousel'.$row['Company_Division_Id'].'">
                                 <div class="carousel-inner">
                                     <div class="item active">
                                         <img alt="image" class="img-responsive" src="http://a.localhost/img/p_big3.jpg">
@@ -68,32 +68,25 @@ function showData($data,$con,$limit){
                                     </div>
 
                                 </div>
-                                <a data-slide="prev" href="#carousel'.$row['Product_Id'].'" class="left carousel-control">
+                                <a data-slide="prev" href="#carousel'.$row['Company_Division_Id'].'" class="left carousel-control">
                                     <span class="icon-prev"></span>
                                 </a>
-                                <a data-slide="next" href="#carousel'.$row['Product_Id'].'" class="right carousel-control">
+                                <a data-slide="next" href="#carousel'.$row['Company_Division_Id'].'" class="right carousel-control">
                                     <span class="icon-next"></span>
                                 </a>
                             </div>
                             <div>
                                 <div class="ibox-content profile-content">
-                                <h4><strong>Product Description</strong></h4>
+                                <h4><strong>Company Description</strong></h4>
                               
                                 <p>
-                                    '.$row['Product_Description'].'                           </p>
-                                    <p>
-                                   <strong>In Stock:</strong> '.$row['Quantity'].'                                </p>
-                                <p>
-                                   <strong>Price:</strong> '.$row['Price'].'                                </p>
+                                    '.$row['Division_Description'].'                           </p>
+                                    
                                 
-                                <form class="NewOrder">
-                                    <input type="hidden" name=CompanyDivision" value="'.$row['Company_Division_Id'].'">
-                                    <input type="hidden" name="ProductTitle" value="'.$row['Product_Name'].'">
-                                    <input type="hidden" name="ProductDescription" value="'.$row['Product_Description'].'">
-                                    <input type="hidden" name="ProductId" value="'.$row['Product_Id'].'">
-                                    <input type="hidden" name="ProductPrice" value="'.$row['Price'].'">
-                                    <input type="quantity" name="ProductQuantity" placeholder="Quantity" class="form-control">
-                                    <button type="button submit" class="btn btn-primary btn-sm btn-block">Order</button>
+                                <form action="NewOrder.php" class="NewOrder">
+                                    <input type="hidden" name="CompanyDivision" value="'.$row['Company_Division_Id'].'">
+                                    <input type="hidden" name="ProductTitle" value="'.$row['Division_Description'].'">
+                                    <button type="button submit" class="btn btn-primary btn-sm btn-block">SELECT</button>
                                    
                             </form>
                             </div>

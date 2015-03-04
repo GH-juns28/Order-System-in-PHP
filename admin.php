@@ -13,7 +13,7 @@ $CheckUserInfo = $CheckUserInfo->CheckUserInfo($_SESSION['email'],$_SESSION['pas
 $CheckUserType = new ManageUsers();
 $CheckUserType = $CheckUserType->CheckUserType($_SESSION['User_Id']);
 $CheckIfSalesman = new ManageUsers();
-$CheckIfSalesman->CheckIfSalesman($CheckUserType[0][0]);
+$CheckIfSalesman->CheckIfAdmin($CheckUserType[0][0]);
 
 
 include_once('class/class.Products.php');
@@ -21,14 +21,6 @@ include_once('class/class.Products.php');
 $ShowProduct = new Products();
 $ShowProduct = $ShowProduct->ViewProducts(10,1);
 
-// the message
-$msg = "First line of text\nSecond line of text";
-
-// use wordwrap() if lines are longer than 70 characters
-$msg = wordwrap($msg,70);
-
-// send email
-mail("adrivanrex@gmail.com","My subject",$msg);
 
 
 ?>
@@ -102,7 +94,7 @@ mail("adrivanrex@gmail.com","My subject",$msg);
                 <li>
                     <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Customer</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="NewOrder.php">Order</a></li>
+                        <li><a href="order.php">Order</a></li>
                         <li><a href="ManageOrder.php">Manage Order</a></li> 
                     </ul>
                 </li>

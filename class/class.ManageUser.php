@@ -85,8 +85,12 @@ class ManageUsers{
 		
 	}
 
-	function CheckIfCustomer(){
+	
 
+	function CheckIfAdmin($user_type){
+		if($user_type !== "3"){
+			header('Location: index.php');
+		}
 	}
 	
 }

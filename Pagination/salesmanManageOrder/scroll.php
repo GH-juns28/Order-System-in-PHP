@@ -5,6 +5,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 include_once('../../class/class.ManageProducts.php');
+include_once('../../class/class.ProductDivision.php');
 
 
 // Create connection

@@ -1,10 +1,9 @@
  var ajax_arry=[];
  var ajax_index =0;
  var sctp = 100;
- var url = 'Pagination/NewOrder/scroll.php';
+ var url = 'Pagination/companyDivision/scroll.php';
  $(function(){
    $('#loading').show();
-
    function getUrlParameter(sParam)
 					{
 					    var sPageURL = window.location.search.substring(1);
@@ -22,8 +21,6 @@
 					 parameter = parseInt(getUrlParameter('CompanyDivision'));
 
 data = 'actionfunction=showData&page=1&Company_Division_Id='+parameter+'';
-
-
  $.ajax({
 	     url:url,
                   type:"POST",
@@ -52,7 +49,6 @@ data = 'actionfunction=showData&page=1&Company_Division_Id='+parameter+'';
 	   
 	     if ($(window).scrollTop() + $(window).height() == $(document).height() && isload=='true'){
 		   $('#loading').show();
-
 	   var ajaxreq = $.ajax({
 	     url: url,
                   type:"POST",

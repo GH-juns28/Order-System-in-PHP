@@ -5,6 +5,8 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 
+include_once('../class/class.ProductDivision.php');
+
 // Create connection
 $con = new mysqli($servername, $username, $password, "alvin");
 
@@ -32,6 +34,15 @@ function showData($data,$con,$limit){
   $data = $con->query($sql);
   if($data!=null && $data->num_rows>0){
    while( $row = $data->fetch_array(MYSQLI_ASSOC)){
+    $showComapnyInfo = new ProductDivision();
+    $showCompany = $showComapnyInfo->GetCompanyInfo($row['Company_Division_Id']);
+    $company = array();
+      for ($i=0; $i < count($showCompany) ; $i++) { 
+
+        array_push($company, $showCompany);
+      }
+
+      
       $str.='
       
        <tr>
@@ -39,7 +50,7 @@ function showData($data,$con,$limit){
                                 <td>'.$row['Product_Name'].'</td>
                                 <td>'.$row['Product_Description'].'</td>
                                 <td>'.$row['Price'].'</td>
-                                <td>1</td>
+                                <td>'.$company[0][0][2].'</td>
                                 <td>'.$row['Quantity'].'</td>
                                 
                                 <td>

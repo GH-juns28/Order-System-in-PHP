@@ -8,7 +8,6 @@ $( document ).ready(function() {
 
                 fileUrl = ''+window.location.origin+'/graphApi/loginApi.php?email='+LoginFormEmail+'&password='+LoginFormPassword+'';
                 $.getJSON(fileUrl, function(data){
-                    alert(data.output);
 				     if(data.output == 1){
 				     	document.location = ''+window.location.origin+'/index.php';
 				     }else{

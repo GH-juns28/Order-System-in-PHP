@@ -4,6 +4,7 @@
     Project By: Alvin 
     Tutor: Rex Adrivan    
 */
+
 include_once('class/class.SessionCheck.php');
 $sessionCheck = new SessionCheck();
 $sessionCheck->checkSession($_SESSION);
@@ -13,7 +14,6 @@ $CheckUserInfo = $CheckUserInfo->CheckUserInfo($_SESSION['email'],$_SESSION['pas
 $CheckUserType = new ManageUsers();
 $CheckUserType = $CheckUserType->CheckUserType($_SESSION['User_Id']);
 $CheckIfSalesman = new ManageUsers();
-$CheckIfSalesman->CheckIfSalesman($CheckUserType[0][0]);
 
 
 include_once('class/class.Products.php');
@@ -30,7 +30,7 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title></title>
+    <title>Alvin Thesis | Dashboard v.4</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -44,35 +44,30 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
 </head>
 
 <body>
-
     <div id="wrapper">
-
     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav" id="side-menu">
                 <li class="nav-header">
-                    <div class="dropdown profile-element"> 
+                    <div class="dropdown profile-element">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $CheckUserInfo[0]['Username'];?></strong>
-                             </span> </span> </a>
-                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="profile.html">Profile</a></li>
-                            <li><a href="contacts.html">Contacts</a></li>
-                            <li><a href="mailbox.html">Mailbox</a></li>
-                            <li class="divider"></li>
-                            <li><a href="login.html">Logout</a></li>
-                        </ul>
+                             </span>  </span> </a>
+                       
                     </div>
                     <div class="logo-element">
                         IN+
                     </div>
                 </li>
-                <li class="active">
-                    <a href="index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span></span></a>
+                <li>
+                    <a href="index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Home</span> <span></span></a>
                 </li>
                 
+                     
+              
                 
-                <?php
+                
+                 <?php
                     if($CheckUserType[0][0] == 2){
                         ?>
                             <li>
@@ -86,7 +81,7 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
                         <?php
                     }
                 ?>
-              
+                              
                 <li>
                     <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Customer</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
@@ -131,72 +126,18 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
         </div>
 
 
-        <div id="tabledata" class="wrapper wrapper-content">
-        
+        <div  class="wrapper wrapper-content">
+            <div id="ProductContent" class="row">
 
-
-        <div class="row">   
-        <div class="col-lg-12">
-        <div class="ibox float-e-margins">
-        <div class="ibox-title">
-            <h5>Custom responsive table </h5>
-            <div class="ibox-tools">
-                <a class="collapse-link">
-                    <i class="fa fa-chevron-up"></i>
-                </a>
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-wrench"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#">Config option 1</a>
-                    </li>
-                    <li><a href="#">Config option 2</a>
-                    </li>
-                </ul>
-                <a class="close-link">
-                    <i class="fa fa-times"></i>
-                </a>
             </div>
-        </div>
-        <div class="ibox-content">
-            <div class="row ">
-                
-            </div>
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-
-                        <th>Order Id</th>
-                        <th>Customer Name</th>
-                        <th>Date</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Total Price</th>
-                        <th>Status</th>
-                    </tr>
-                    </thead>
-                    <tbody page="2" class="InsertProductData">
-                    </tbody>
-                </table>
-            </div>
-            
-        </div>
-        </div>
-        </div>
-
-        </div>
-
 
         </div>
 
 
         <div class="footer">
-            <div class="pull-right">
-                10GB of <strong>250GB</strong> Free.
-            </div>
+            
             <div>
-                <strong>Copyright</strong> Example Company &copy; 2014-2015
+                <strong>Copyright</strong> Alvin Company &copy; 2014-2015
             </div>
         </div>
 
@@ -209,17 +150,10 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-    <script src="Pagination/salesmanManageOrder/script.js"></script>
-    <script src="JSfiles/SalesManageOrder.js"></script>
-    <!-- Flot -->
-    <script src="js/plugins/flot/jquery.flot.js"></script>
-    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="js/plugins/flot/jquery.flot.spline.js"></script>
-    <script src="js/plugins/flot/jquery.flot.resize.js"></script>
-    <script src="js/plugins/flot/jquery.flot.pie.js"></script>
-    <script src="js/plugins/flot/jquery.flot.symbol.js"></script>
-    <script src="js/plugins/flot/curvedLines.js"></script>
+    <script src="JSfiles/scrollend.js"></script>
+    <script src="JSfiles/OrderProduct.js"></script>
 
+        
     <!-- Peity -->
     <script src="js/plugins/peity/jquery.peity.min.js"></script>
     <script src="js/demo/peity-demo.js"></script>
@@ -243,6 +177,26 @@ $ShowProduct = $ShowProduct->ViewProducts(10,1);
 
     <!-- ChartJS-->
     <script src="js/plugins/chartJs/Chart.min.js"></script>
+    <script src="Pagination/companyDivision/script.js"></script>
+    <script src="JSfiles/categories.js"></script>
+
+
+    <div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;"><div class="modal-backdrop fade in"></div>
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Info</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p id="alert16message"><strong>Product Successfully Ordered</strong> .</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
 </body>
 
